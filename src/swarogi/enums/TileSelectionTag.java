@@ -1,0 +1,13 @@
+package swarogi.enums;
+
+public enum TileSelectionTag {
+    HOVER_NEUTRAL,
+    SELECTED,
+    INACTIVE_POSITIVE,
+    INACTIVE_NEGATIVE,
+    INACTIVE_ALLIED,
+    ACTIVE_POSITIVE,
+    ACTIVE_NEGATIVE,
+    ACTIVE_ALLIED,
+    NOT_ACCESSIBLE
+}

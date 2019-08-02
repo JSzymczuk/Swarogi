@@ -1,0 +1,164 @@
+
+Gród
+Chata
+Dom wojów
+Palisada
+Brama
+Wieża obserwacyjna
+Trakt
+Chram
+Tartak?
+
+Dowódca
+Robotnik
+Wojownik
+Strzelec
+Konny
+Guślarz
+
+Trening wojów
+Zaaw. trening wojów
+Trening strzelców
+Tarcze
+Płonące strzały
+Dwupolówka
+Zaaw. trening strzelców
+Rozbudowa chramów
+
+Limit strzelców w wieży: 1
+Limit strzelców w wieży: 2
+Limit strzelców w grodzie: 1
+Limit strzelców w grodzie: 2
+Limit strzelców w grodzie: 3
+Limit strzelców w grodzie: 4
+
+
+Wilk
+Rozbójnik
+Baba jagodowa
+Południca
+Leszy
+
+
+
+Siła - poziom 1:
++ 1 premia do pancerza jednostek
++ dodatkowa zdolność dowódcy (wybrana jednostka zada zwiększone obrażenia)
+
+Siła - poziom 2:
++ 2 premia do pancerza jednostek
++ 5% do obrażeń zadawanych w walce wręcz
+
+Siła - poziom 3:
++ 3 premia do pancerza jednostek
++ dodatkowa zdolność dowódcy
+
+Siła - poziom 4:
++ 5 premia do pancerza jednostek
++ 10% do obrażeń zadawanych w walce wręcz
+
+Siła - poziom 5:
++ 8 premia do pancerza jednostek
++ dodatkowa zdolność dowódcy
++ 10% do maksymalnej wytrzymałości jednostek
+
+
+Bezwzględność - poziom 1:
++ 5% do obrażeń zadawanych w walce wręcz
++ dodatkowa zdolność dowódcy (ataki zadawne przez wybraną jednostkę będą wywoływać krwawienie)
+
+Bezwzględność - poziom 2:
++ 10% do obrażeń zadawanych w walce wręcz
++ 10% na zadanie ciosu krytycznego w walce wręcz
+
+Bezwzględność - poziom 3:
++ 15% do obrażeń zadawanych w walce wręcz
++ dodatkowa zdolność dowódcy (podnosi szanse na cios krytyczny, ale zwiększa otrzymywane obrażenia)
+
+Bezwzględność - poziom 4:
++ 20% do obrażeń zadawanych w walce wręcz
++ 15% na zadanie ciosu krytycznego w walce wręcz
+
+Bezwzględność - poziom 5:
++ 30% do obrażeń zadawanych w walce wręcz
++ dodatkowa zdolność dowódcy
+obrażenia zadawane podczas ciosów krytycznych są zwiększone trzykrotnie
+
+
+Spryt - poziom 1:
++ 10% do prękości ruchu
++ dodatkowa zdolność dowódcy (zasadzka: jednostka staje się niewidzialna i zaatakuje automatycznie pobliskiego wroga)
+
+Spryt - poziom 2:
++ 20% do prękości ruchu
++ 5% do obrażeń zadawanych przez pociski
+
+Spryt - poziom 3:
++ 30% do prękości ruchu
++ dodatkowa zdolność dowódcy (zastawienie pułapki obszarowej)
+
+Spryt - poziom 4:
++ 40% do prękości ruchu
++ 10% do obrażeń zadawanych przez pociski
+
+Spryt - poziom 5:
++ 50% do prękości ruchu
++ dodatkowa zdolność dowódcy (jednostka może poruszyć się drugi raz)
++ 10% na uniknięcie ciosu w walce wręcz
+
+
+Harmonia - poziom 1:
++ 5% do maksymalnej wytrzymałości jednostek
++ dodatkowa zdolność dowódcy (pasywna regeneracja wybranej jednostki przez wiele tur)
+
+Harmonia - poziom 2:
++ 10% do maksymalnej wytrzymałości jednostek
++ 50% do regeneracji punktów wytrzymałości
+
+Harmonia - poziom 3:
++ 15% do maksymalnej wytrzymałości jednostek
++ dodatkowa zdolność dowódcy
+
+Harmonia - poziom 4:
++ 20% do maksymalnej wytrzymałości jednostek
++ 100% do regeneracji punktów wytrzymałości
+
+Harmonia - poziom 5:
++ 30% do maksymalnej wytrzymałości jednostek
++ dodatkowa zdolność dowódcy
+jednostki regenerują punkty wytrzymałości również gdy wykonały akcję w poprzedniej turze
+
+
+Wiedza - poziom 1:
++ 5% do ilości pozyskiwanych surowców
++ dodatkowa zdolność dowódcy
+
+Wiedza - poziom 2:
++ 10% do ilości pozyskiwanych surowców
++ 1 punkt taktyki otrzymywany na początku tury
+
+Wiedza - poziom 3:
++ 15% do ilości pozyskiwanych surowców
++ dodatkowa zdolność dowódcy
+
+Wiedza - poziom 4:
++ 20% do ilości pozyskiwanych surowców
++ 2 punkty taktyki otrzymywane na początku tury
+
+Wiedza - poziom 5:
++ 30% do ilości pozyskiwanych surowców
++ dodatkowa zdolność dowódcy
+produkcja jednostek odbywa się o jedną turę szybciej
+
+
+
+premia do obrażeń, gdy atak od tyłu
+ogłuszenie: jednostka nie kontratakuje
+założenie: silne ataki nie otrzymują kontrakatku
+50% że po ataku szybkim jednostka zostanie ogłuszona
+premia do obrażeń balistycznych
+
+
+
+
+
