@@ -39,6 +39,7 @@ public final class MapLoader {
                 else if (lineSplit[0].equals("Obstacle")) {
                     Tile tile = map.getTile(Integer.parseInt(lineSplit[2]), Integer.parseInt(lineSplit[3]));
                     ObstacleData model = Database.Obstacles.get(lineSplit[1]);
+                    if (model == null) { System.err.println("Model " + lineSplit[1] + " was null.\n"); }
                     map.tryPlace(new Obstacle(model), tile);
                 }
                 else if (lineSplit[0].equals("Decoration")) {

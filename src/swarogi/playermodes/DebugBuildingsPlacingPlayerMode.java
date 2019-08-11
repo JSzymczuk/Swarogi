@@ -46,7 +46,7 @@ public class DebugBuildingsPlacingPlayerMode extends DebugPlacingPlayerMode {
     protected void place(Tile tile) {
         BuildingData model = 0 <= currentModel && currentModel < models.size() ? models.get(currentModel) : null;
         if (model != null) {
-            Building building = new Building(model, player);
+            Building building = new Building(model, player, true);
             GameMap map = getMap();
             if (map.tryPlace(building, tile)) {
                 map.addDestructible(building);

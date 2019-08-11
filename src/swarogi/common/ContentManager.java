@@ -18,7 +18,11 @@ public final class ContentManager {
     }
 
     public static BufferedImage getTerrain(TerrainType terrainType) {
-        return terrain.get(terrainType);
+        return terrain.getOrDefault(terrainType, null);
+    }
+
+    public static TerrainExtensionInfo getTerrainExtension(TerrainType terrainType) {
+        return terrainExtensions.getOrDefault(terrainType, null);
     }
 
     public static BufferedImage getModel(String modelName) { return models.getOrDefault(modelName, null); }
@@ -31,6 +35,7 @@ public final class ContentManager {
 
     private final static HashMap<TileSelectionTag, BufferedImage> tileSelections;
     private final static HashMap<TerrainType, BufferedImage> terrain;
+    private final static HashMap<TerrainType, TerrainExtensionInfo> terrainExtensions;
     private final static HashMap<String, BufferedImage> models;
     private final static HashMap<String, BufferedImage> modelTextureBases;
 
@@ -49,14 +54,21 @@ public final class ContentManager {
     public final static BufferedImage borderLeft;
     public final static BufferedImage bottomTextShadow;
 
+    public final static BufferedImage grid;
+    public final static BufferedImage tileHex;
+
     static {
         tileSelections = new HashMap<>();
         terrain = new HashMap<>();
+        terrainExtensions = new HashMap<>();
         models = new HashMap<>();
         modelTextureBases = new HashMap<>();
         animalsDefault = new HashMap<>();
         animalsHover = new HashMap<>();
         animalsCompleted = new HashMap<>();
+
+        grid = loadImage("content/tiles/grid.png");
+        tileHex = loadImage("content/tiles/tile-hex.png");
 
         borderTopLeft = loadImage("content/gui/border-top-left.png");
         borderTop = loadImage("content/gui/border-top.png");
@@ -94,7 +106,7 @@ public final class ContentManager {
     private static void loadSelections() {
         BufferedImage tileSelectionBase = loadImage("content/tiles/selection.png");
         tileSelections.put(TileSelectionTag.HOVER_NEUTRAL, createColoredBaseFromImage(tileSelectionBase,
-                159, 159, 159));
+                240, 240, 240));
         tileSelections.put(TileSelectionTag.INACTIVE_NEGATIVE, createColoredBaseFromImage(tileSelectionBase,
                 95, 0, 0));
         tileSelections.put(TileSelectionTag.INACTIVE_POSITIVE, createColoredBaseFromImage(tileSelectionBase,
@@ -123,6 +135,14 @@ public final class ContentManager {
         terrain.put(TerrainType.Soil, loadImage("content/tiles/soil.png"));
         terrain.put(TerrainType.DryGrass, loadImage("content/tiles/dry-grass.png"));
         terrain.put(TerrainType.DarkGrass, loadImage("content/tiles/dark-grass.png"));
+
+        terrainExtensions.put(TerrainType.Dirt, new TerrainExtensionInfo(loadImage("content/tiles/dirt-extension.png")));
+        terrainExtensions.put(TerrainType.Grass, new TerrainExtensionInfo(loadImage("content/tiles/grass-extension.png")));
+        terrainExtensions.put(TerrainType.LushGrass, new TerrainExtensionInfo(loadImage("content/tiles/lush-grass-extension.png")));
+        terrainExtensions.put(TerrainType.Sand, new TerrainExtensionInfo(loadImage("content/tiles/sand-extension.png")));
+        terrainExtensions.put(TerrainType.Soil, new TerrainExtensionInfo(loadImage("content/tiles/soil-extension.png")));
+        terrainExtensions.put(TerrainType.DryGrass, new TerrainExtensionInfo(loadImage("content/tiles/dry-grass-extension.png")));
+        terrainExtensions.put(TerrainType.DarkGrass, new TerrainExtensionInfo(loadImage("content/tiles/dark-grass-extension.png")));
     }
 
     private static void loadUnits() {

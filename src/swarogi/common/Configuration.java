@@ -50,15 +50,16 @@ public final class Configuration {
     public static final List<Color> PLAYER_COLORS;
 
     public static boolean areHpBarsVisible = true;
+    public static boolean isHexagonalMeshVisible = true;
     public static boolean mapBuildingXSymmetry = false;
     public static boolean mapBuildingYSymmetry = false;
     public static boolean mapBuildingDiagSymmetry = false;
 
     // TODO: Usunąć z ostatecznej wersji, gdy zostaną dobrane rozmiary pól
-    private static final float TILE_SCALE = 0.5f;
-    private static final int BASE_TILE_WIDTH = 200;
-    private static final int BASE_TILE_HEIGHT = 149;
-    private static final int BASE_TILE_SLANT_WIDTH = 51;
+    static final float TILE_SCALE = 0.5f;
+    static final int BASE_TILE_WIDTH = 200;
+    static final int BASE_TILE_HEIGHT = 149;
+    static final int BASE_TILE_SLANT_WIDTH = 51;
 
     static {
         TILE_WIDTH = (int)(TILE_SCALE * BASE_TILE_WIDTH);

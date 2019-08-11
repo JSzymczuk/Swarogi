@@ -39,7 +39,7 @@ public enum ActionButton {
     TRIBE_PATHS_MENU(31),
     NEXT_UNIT(32),
 
-    HIDE_HP_BARS(33);
+    ALTERNATE_1(33);
 
     ActionButton(int value) { this.value = value; }
     public int getValue() { return value; }

@@ -62,7 +62,7 @@ public class GameControls implements ControlsProvider, MouseListener, MouseMotio
 
         keyboardMapping.put(KeyEvent.VK_B, ActionButton.BUILDING_MENU.getValue());
         keyboardMapping.put(KeyEvent.VK_A, ActionButton.ATTACK.getValue());
-        keyboardMapping.put(KeyEvent.VK_ALT, ActionButton.HIDE_HP_BARS.getValue());
+        keyboardMapping.put(KeyEvent.VK_ALT, ActionButton.ALTERNATE_1.getValue());
         keyboardMapping.put(KeyEvent.VK_ENTER, ActionButton.END_TURN.getValue());
         keyboardMapping.put(KeyEvent.VK_R, ActionButton.TRIBE_PATHS_MENU.getValue());
         keyboardMapping.put(KeyEvent.VK_N, ActionButton.NEXT_UNIT.getValue());

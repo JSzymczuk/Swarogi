@@ -1,6 +1,7 @@
 package swarogi.game;
 
 import swarogi.common.Configuration;
+import swarogi.enums.Direction;
 import swarogi.enums.PlacingType;
 import swarogi.enums.TerrainType;
 import swarogi.interfaces.Destructible;
@@ -185,6 +186,8 @@ public class Tile {
     }
 
     public List<Tile> getNeighbors() { return map.getTileNeighbors(this); }
+
+    public Tile getNeighbor(Direction direction) { return map.getTileNeighbor(this, direction); }
 
     public static boolean areNeighbors(Tile tile1, Tile tile2) {
         int x1 = tile1.xIdx, y1 = tile1.yIdx;

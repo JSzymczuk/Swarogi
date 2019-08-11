@@ -2,6 +2,9 @@ package swarogi.game;
 
 import swarogi.common.Configuration;
 import swarogi.common.ContentManager;
+import swarogi.common.TerrainExtensionInfo;
+import swarogi.enums.Direction;
+import swarogi.enums.TerrainType;
 import swarogi.enums.UnitDirection;
 import swarogi.interfaces.Destructible;
 import swarogi.interfaces.DestructibleData;
@@ -18,10 +21,16 @@ public class Renderer {
 
     private Graphics graphics;
     private GameCamera camera;
+    private int tileWidth;
+    private int tileHeight;
+    private int tileSlant;
 
     public void startRendering(Graphics graphics, GameCamera camera) {
         this.graphics = graphics;
         this.camera = camera;
+        this.tileWidth = Configuration.TILE_WIDTH;
+        this.tileHeight = Configuration.TILE_HEIGHT;
+        this.tileSlant = Configuration.TILE_SLANT_WIDTH;
     }
 
     public void endRendering() {
@@ -121,6 +130,107 @@ public class Renderer {
 
             if (Configuration.areHpBarsVisible) {
                 renderHpBar(building, x + textureWidth / 2, y + textureHeight / 2);
+            }
+        }
+    }
+
+    public void render(Tile tile) {
+        Point pos = tile.getTopLeft();
+        int x = pos.x - camera.x;
+        int y = pos.y - camera.y;
+        TerrainType tileTerrainType = tile.getTerrainType();
+        int tileTerrainPriority = tileTerrainType.getTilingPriority();
+
+        graphics.drawImage(ContentManager.getTerrain(tileTerrainType),
+                x, y, tileWidth, tileHeight, null);
+
+        Tile neighbor = tile.getNeighbor(Direction.TOP_LEFT);
+        if (neighbor != null) {
+            TerrainType neighborTerrainType = neighbor.getTerrainType();
+            int neighborTerrainPriority = neighborTerrainType.getTilingPriority();
+            if (neighborTerrainPriority < tileTerrainPriority) {
+                TerrainExtensionInfo terrainExtensionInfo = ContentManager.getTerrainExtension(tileTerrainType);
+                graphics.drawImage(terrainExtensionInfo.texture,
+                        x - terrainExtensionInfo.destinationX, y - terrainExtensionInfo.destinationY,
+                        x + tileSlant, y + tileHeight / 2,
+                        0, 0,
+                        terrainExtensionInfo.x1, terrainExtensionInfo.halfY,
+                        null);
+            }
+        }
+
+        neighbor = tile.getNeighbor(Direction.TOP);
+        if (neighbor != null) {
+            TerrainType neighborTerrainType = neighbor.getTerrainType();
+            int neighborTerrainPriority = neighborTerrainType.getTilingPriority();
+            if (neighborTerrainPriority < tileTerrainPriority) {
+                TerrainExtensionInfo terrainExtensionInfo = ContentManager.getTerrainExtension(tileTerrainType);
+                graphics.drawImage(terrainExtensionInfo.texture,
+                        x + tileSlant, y - terrainExtensionInfo.destinationY,
+                        x + tileWidth - tileSlant, y + tileHeight / 2,
+                        terrainExtensionInfo.x1, 0,
+                        terrainExtensionInfo.x2, terrainExtensionInfo.halfY,
+                        null);
+            }
+        }
+
+        neighbor = tile.getNeighbor(Direction.TOP_RIGHT);
+        if (neighbor != null) {
+            TerrainType neighborTerrainType = neighbor.getTerrainType();
+            int neighborTerrainPriority = neighborTerrainType.getTilingPriority();
+            if (neighborTerrainPriority < tileTerrainPriority) {
+                TerrainExtensionInfo terrainExtensionInfo = ContentManager.getTerrainExtension(tileTerrainType);
+                graphics.drawImage(terrainExtensionInfo.texture,
+                        x + tileWidth - tileSlant, y - terrainExtensionInfo.destinationY,
+                        x + tileWidth + terrainExtensionInfo.destinationX, y + tileHeight / 2,
+                        terrainExtensionInfo.x2, 0,
+                        terrainExtensionInfo.texture.getWidth(), terrainExtensionInfo.halfY,
+                        null);
+            }
+        }
+
+        neighbor = tile.getNeighbor(Direction.BOTTOM_RIGHT);
+        if (neighbor != null) {
+            TerrainType neighborTerrainType = neighbor.getTerrainType();
+            int neighborTerrainPriority = neighborTerrainType.getTilingPriority();
+            if (neighborTerrainPriority < tileTerrainPriority) {
+                TerrainExtensionInfo terrainExtensionInfo = ContentManager.getTerrainExtension(tileTerrainType);
+                graphics.drawImage(terrainExtensionInfo.texture,
+                        x + tileWidth - tileSlant, y + tileHeight / 2,
+                        x + tileWidth + terrainExtensionInfo.destinationX, y + tileHeight + terrainExtensionInfo.destinationY,
+                        terrainExtensionInfo.x2, terrainExtensionInfo.halfY,
+                        terrainExtensionInfo.texture.getWidth(), terrainExtensionInfo.texture.getHeight(),
+                        null);
+            }
+        }
+
+        neighbor = tile.getNeighbor(Direction.BOTTOM);
+        if (neighbor != null) {
+            TerrainType neighborTerrainType = neighbor.getTerrainType();
+            int neighborTerrainPriority = neighborTerrainType.getTilingPriority();
+            if (neighborTerrainPriority < tileTerrainPriority) {
+                TerrainExtensionInfo terrainExtensionInfo = ContentManager.getTerrainExtension(tileTerrainType);
+                graphics.drawImage(terrainExtensionInfo.texture,
+                        x + tileSlant, y + tileHeight / 2,
+                        x + tileWidth - tileSlant, y + tileHeight + terrainExtensionInfo.destinationY,
+                        terrainExtensionInfo.x1, terrainExtensionInfo.halfY,
+                        terrainExtensionInfo.x2, terrainExtensionInfo.texture.getHeight(),
+                        null);
+            }
+        }
+
+        neighbor = tile.getNeighbor(Direction.BOTTOM_LEFT);
+        if (neighbor != null) {
+            TerrainType neighborTerrainType = neighbor.getTerrainType();
+            int neighborTerrainPriority = neighborTerrainType.getTilingPriority();
+            if (neighborTerrainPriority < tileTerrainPriority) {
+                TerrainExtensionInfo terrainExtensionInfo = ContentManager.getTerrainExtension(tileTerrainType);
+                graphics.drawImage(terrainExtensionInfo.texture,
+                        x - terrainExtensionInfo.destinationX, y + tileHeight / 2,
+                        x + tileSlant, y + tileHeight + terrainExtensionInfo.destinationY,
+                        0, terrainExtensionInfo.halfY,
+                        terrainExtensionInfo.x1, terrainExtensionInfo.texture.getHeight(),
+                        null);
             }
         }
     }

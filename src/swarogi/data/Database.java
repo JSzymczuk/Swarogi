@@ -560,10 +560,12 @@ public final class Database {
         worker.setMovementSpeed(6.5f);
 
         worker.setTextureName("Worker");
-        worker.setXTexturePosition(2);
-        worker.setYTexturePosition(-34);
-        worker.setXScale(0.4f);
-        worker.setYScale(0.4f);
+        worker.setXTexturePosition(9);
+        worker.setYTexturePosition(-30);
+        //worker.setXTexturePosition(2);
+        //worker.setYTexturePosition(-34);
+        //worker.setXScale(0.4f);
+        //worker.setYScale(0.4f);
 
         worker.addCreatedUnit(barracks);
         worker.addCreatedUnit(farm);
@@ -605,10 +607,12 @@ public final class Database {
         warrior.setMovementSpeed(6.5f);
 
         warrior.setTextureName("Warrior");
-        warrior.setXTexturePosition(2);
-        warrior.setYTexturePosition(-34);
-        warrior.setXScale(0.4f);
-        warrior.setYScale(0.4f);
+        warrior.setXTexturePosition(0);
+        warrior.setYTexturePosition(-30);
+//        warrior.setXTexturePosition(2);
+//        warrior.setYTexturePosition(-34);
+//        warrior.setXScale(0.4f);
+//        warrior.setYScale(0.4f);
 
         warrior.addCharacteristic(Characteristic.Living);
         warrior.addCharacteristic(Characteristic.Destructible);
@@ -650,10 +654,12 @@ public final class Database {
         bowman.setMovementSpeed(6.5f);
 
         bowman.setTextureName("Bowman");
-        bowman.setXTexturePosition(2);
-        bowman.setYTexturePosition(-34);
-        bowman.setXScale(0.4f);
-        bowman.setYScale(0.4f);
+        bowman.setXTexturePosition(0);
+        bowman.setYTexturePosition(-30);
+//        bowman.setXTexturePosition(2);
+//        bowman.setYTexturePosition(-34);
+//        bowman.setXScale(0.4f);
+//        bowman.setYScale(0.4f);
 
         bowman.addCharacteristic(Characteristic.Living);
         bowman.addCharacteristic(Characteristic.Destructible);
@@ -689,10 +695,12 @@ public final class Database {
         rider.setMovementSpeed(6.5f);
 
         rider.setTextureName("Rider");
-        rider.setXTexturePosition(-4);
-        rider.setYTexturePosition(-40);
-        rider.setXScale(0.4f);
-        rider.setYScale(0.4f);
+        rider.setXTexturePosition(-1);
+        rider.setYTexturePosition(-39);
+//        rider.setXTexturePosition(-4);
+//        rider.setYTexturePosition(-40);
+//        rider.setXScale(0.4f);
+//        rider.setYScale(0.4f);
 
         rider.addCharacteristic(Characteristic.Living);
         rider.addCharacteristic(Characteristic.Destructible);
@@ -730,10 +738,12 @@ public final class Database {
         volkhv.setMovementSpeed(6.5f);
 
         volkhv.setTextureName("Volkhv");
-        volkhv.setXTexturePosition(2);
-        volkhv.setYTexturePosition(-34);
-        volkhv.setXScale(0.4f);
-        volkhv.setYScale(0.4f);
+        volkhv.setXTexturePosition(-1);
+        volkhv.setYTexturePosition(-31);
+//        volkhv.setXTexturePosition(2);
+//        volkhv.setYTexturePosition(-34);
+//        volkhv.setXScale(0.4f);
+//        volkhv.setYScale(0.4f);
 
         volkhv.addCharacteristic(Characteristic.Living);
         volkhv.addCharacteristic(Characteristic.Destructible);
@@ -776,10 +786,12 @@ public final class Database {
         leader.setMovementSpeed(6.5f);
 
         leader.setTextureName("Hero");
-        leader.setXTexturePosition(-4);
-        leader.setYTexturePosition(-40);
-        leader.setXScale(0.4f);
-        leader.setYScale(0.4f);
+        leader.setXTexturePosition(-1);
+        leader.setYTexturePosition(-39);
+//        leader.setXTexturePosition(-4);
+//        leader.setYTexturePosition(-40);
+//        leader.setXScale(0.4f);
+//        leader.setYScale(0.4f);
 
         leader.addCharacteristic(Characteristic.Leader);
         leader.addCharacteristic(Characteristic.Living);
