@@ -7,6 +7,7 @@ import swarogi.common.WindowSize;
 import swarogi.engine.MapLoader;
 import swarogi.enums.Direction;
 import swarogi.enums.TerrainType;
+import swarogi.gui.RenderingHelper;
 import swarogi.interfaces.WindowSizeProvider;
 import swarogi.data.Database;
 import swarogi.interfaces.*;
@@ -216,7 +217,7 @@ public class GamePanel extends JPanel implements PlayerModeChangeListener, Windo
 
         currentPlayerMode.renderGui(g, getSize(), font);
 
-        drawBorder(g);
+        RenderingHelper.drawBorder(g, getSize(), font, players.get(currentPlayerId));
 
         renderer.endRendering();
     }
@@ -246,71 +247,6 @@ public class GamePanel extends JPanel implements PlayerModeChangeListener, Windo
             System.out.println("Wybrano tryb edycji terenu");
             currentPlayerMode = new DebugChangeTerrainPlayerMode(player, this, map);
         }
-    }
-
-    private void drawBorder(Graphics g) {
-        Dimension size = this.getSize();
-
-        g.setColor(Color.black);
-        g.fillRect(0, 0, size.width, 51);
-
-        int topFromX = ContentManager.borderTopLeft.getWidth();
-        int topToX = size.width - ContentManager.borderTopRight.getWidth();
-
-        int bottomFromX = ContentManager.borderBottomLeft.getWidth();
-        int bottomToX = size.width - ContentManager.borderBottomRight.getWidth();
-
-        int leftFromY = ContentManager.borderTopLeft.getHeight();
-        int leftToY = size.height - ContentManager.borderBottomLeft.getHeight();
-
-        int rightFromY = ContentManager.borderTopLeft.getHeight();
-        int rightToY = size.height - ContentManager.borderBottomRight.getHeight();
-
-        int incr = ContentManager.borderTop.getWidth();
-        for (int x = topFromX; x < topToX; x += incr) {
-            g.drawImage(ContentManager.borderTop, x, 0, null);
-        }
-
-        incr = ContentManager.borderBottom.getWidth();
-        int temp = size.height - ContentManager.borderBottom.getHeight();
-        for (int x = bottomFromX; x < bottomToX; x += incr) {
-            g.drawImage(ContentManager.borderBottom, x, temp, null);
-        }
-
-        incr = ContentManager.borderLeft.getHeight();
-        for (int y = leftFromY; y < leftToY; y += incr) {
-            g.drawImage(ContentManager.borderLeft, 0, y, null);
-        }
-
-        incr = ContentManager.borderRight.getHeight();
-        temp = size.width - ContentManager.borderRight.getWidth();
-        for (int y = rightFromY; y < rightToY; y += incr) {
-            g.drawImage(ContentManager.borderRight, temp, y, null);
-        }
-
-        g.drawImage(ContentManager.borderTopLeft, 0, 0, null);
-        g.drawImage(ContentManager.borderBottomLeft, 0, leftToY, null);
-        g.drawImage(ContentManager.borderTopRight, topToX, 0, null);
-        g.drawImage(ContentManager.borderBottomRight, bottomToX, rightToY, null);
-
-        g.setFont(font);
-
-        int x6 = size.width / 6;
-        int leftPadding = 20;
-        int topPadding = 30;
-
-        Player currentPlayer = players.get(currentPlayerId);
-        g.setColor(currentPlayer.getColor());
-        g.drawString(currentPlayer.getName(), leftPadding, topPadding);
-        g.setColor(Color.white);
-        g.drawString("Poziom: " + Integer.toString(currentPlayer.getTribeLevel()), leftPadding + x6, topPadding);
-        g.drawString("Żywność: " + Integer.toString(currentPlayer.getFood()), leftPadding + 2 * x6, topPadding);
-        g.drawString("Drewno: " + Integer.toString(currentPlayer.getWood()), leftPadding + 3 * x6, topPadding);
-        g.drawString("Rozmiar armii: " + Integer.toString(currentPlayer.getArmySize()) + "/"
-                + Integer.toString(currentPlayer.getArmyCapacity()), leftPadding + 4 * x6, topPadding);
-        g.drawString("Punkty akcji: " + Integer.toString(currentPlayer.getCommandPoints()) + "/" +
-                "" + Integer.toString(currentPlayer.getMaxCommandPoints()), leftPadding + 5 * x6, topPadding);
-
     }
 
     @Override

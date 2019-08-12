@@ -10,6 +10,7 @@ public class SkillData {
 
     private String name;
     private String description;
+    private String iconName;
     private int foodCost;
     private EffectData effectInduced;
     private EffectData userEffectInduced;
@@ -38,6 +39,9 @@ public class SkillData {
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+
+    public String getIconName() { return this.iconName; }
+    public void setIconName(String name) { this.iconName = name; }
 
     public int getFoodCost() { return foodCost; }
     public void setFoodCost(int foodCost) { this.foodCost = foodCost; }

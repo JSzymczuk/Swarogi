@@ -2,17 +2,19 @@ package swarogi.playermodes;
 
 import swarogi.actions.MovementAction;
 import swarogi.actions.SkillAction;
+import swarogi.common.Configuration;
 import swarogi.datamodels.SkillData;
 import swarogi.engine.Movement;
 import swarogi.engine.Pathfinding;
 import swarogi.engine.Targeting;
-import swarogi.enums.ActionButton;
-import swarogi.enums.TargetType;
-import swarogi.enums.TileSelectionTag;
+import swarogi.enums.*;
 import swarogi.game.GameCamera;
 import swarogi.game.GameMap;
 import swarogi.game.Tile;
 import swarogi.game.TilesSelection;
+import swarogi.gui.DiamondIcon;
+import swarogi.gui.Icon;
+import swarogi.gui.RenderingHelper;
 import swarogi.interfaces.*;
 import swarogi.models.Player;
 import swarogi.models.Unit;
@@ -54,6 +56,8 @@ public class SkillUsePlayerMode extends SelectionPlayerMode {
                 }
             }
         }
+
+        setIcons();
     }
 
     @Override
@@ -67,11 +71,7 @@ public class SkillUsePlayerMode extends SelectionPlayerMode {
     public void update() {
         ControlsProvider controlsProvider = getControls();
 
-        // Wyjdź z trybu zdolności
-        if (controlsProvider.isButtonDown(ActionButton.CANCEL)) {
-            changePlayerMode(new UnitCommandPlayerAction(getPlayer(), getListener(), getMap(), unit));
-            return;
-        }
+        if (checkGuiInteraction()) { return; }
 
         updateHoverable();
 
@@ -116,22 +116,32 @@ public class SkillUsePlayerMode extends SelectionPlayerMode {
         // Pole wybranej jednostki
         renderTile(g, unit.getTile(), camera, TileSelectionTag.SELECTED);
 
-        // Wskazywany obiekt (jeśli nie jest celem)
-        Placeable hoveredPlaceable = getHoveredPlaceable();
-        if (hoveredPlaceable != unit && !allowedTargets.containsKey((Destructible)hoveredPlaceable)) {
-            List<Tile> hoveredTiles = getHoveredTiles();
+        if (!isGuiInteraction()) {
+            // Wskazywany obiekt (jeśli nie jest celem)
+            Placeable hoveredPlaceable = getHoveredPlaceable();
+            if (hoveredPlaceable != unit && !allowedTargets.containsKey((Destructible) hoveredPlaceable)) {
+                List<Tile> hoveredTiles = getHoveredTiles();
 
-            if (hoveredTiles.size() > 0) {
+                if (hoveredTiles.size() > 0) {
 
-                TileSelectionTag tileSelectionTag = getPlaceableSelectionTag(player, hoveredPlaceable,
-                        TileSelectionTag.INACTIVE_POSITIVE, TileSelectionTag.INACTIVE_ALLIED,
-                        TileSelectionTag.INACTIVE_NEGATIVE, TileSelectionTag.HOVER_NEUTRAL);
+                    TileSelectionTag tileSelectionTag = getPlaceableSelectionTag(player, hoveredPlaceable,
+                            TileSelectionTag.INACTIVE_POSITIVE, TileSelectionTag.INACTIVE_ALLIED,
+                            TileSelectionTag.INACTIVE_NEGATIVE, TileSelectionTag.HOVER_NEUTRAL);
 
-                for (Tile tile : hoveredTiles) {
-                    renderTile(g, tile, camera, tileSelectionTag);
+                    for (Tile tile : hoveredTiles) {
+                        renderTile(g, tile, camera, tileSelectionTag);
+                    }
                 }
             }
         }
+    }
+
+    @Override
+    public void renderGui(Graphics g, Dimension size, Font font) {
+        RenderingHelper.drawSummaryBox(g, size);
+        RenderingHelper.drawUnitSummary(g, size, unit);
+        RenderingHelper.drawTextArea(g, size, getText());
+        RenderingHelper.drawIcons(g, getIcons(), size);
     }
 
     // TODO: Ale że jak to java nie ma pakietowych interfejsów?!
@@ -144,8 +154,32 @@ public class SkillUsePlayerMode extends SelectionPlayerMode {
     @Override
     public void changePlayerMode(PlayerMode playerMode) { super.changePlayerMode(playerMode); }
 
+    // TODO: Copy-paste tych dwóch ikon w wielu miejscach
+    private void setIcons() {
+        // Wstecz
+        {
+            Point pos = RenderingHelper.getCancelIconPosition();
+            Icon icon = new DiamondIcon();
+            icon.hAlign = HorizontalAlign.RIGHT;
+            icon.vAlign = VerticalAlign.TOP;
+            icon.x = pos.x;
+            icon.y = pos.y;
+            icon.actionButton = ActionButton.CANCEL;
+            icon.textureKey = Configuration.CANCEL_ICON_NAME;
+            icon.hoverText = "Wstecz [PPM]";
+            icon.clickAction = this::exitMode;
+            icon.hoverAction = () -> setText(icon.hoverText);
+            icon.unhoverAction = () -> setText(null);
+            addIcon(icon);
+        }
+    }
+
     // TODO: Copy-paste z AttackPlayerMode -> TargetManager
     private List<Tile> getTilesForTarget(Destructible destructible) {
         return TilesSelection.get(destructible.getDestructibleData().getPlacingTileGroup(), destructible.getTile());
+    }
+
+    private void exitMode() {
+        changePlayerMode(new UnitCommandPlayerAction(getPlayer(), getListener(), getMap(), unit));
     }
 }

@@ -8,11 +8,16 @@ import swarogi.datamodels.BuildingData;
 import swarogi.engine.Movement;
 import swarogi.engine.Pathfinding;
 import swarogi.enums.ActionButton;
+import swarogi.enums.HorizontalAlign;
 import swarogi.enums.TileSelectionTag;
+import swarogi.enums.VerticalAlign;
 import swarogi.game.GameCamera;
 import swarogi.game.GameMap;
 import swarogi.game.Tile;
 import swarogi.game.TilesSelection;
+import swarogi.gui.DiamondIcon;
+import swarogi.gui.Icon;
+import swarogi.gui.RenderingHelper;
 import swarogi.interfaces.ControlsProvider;
 import swarogi.interfaces.PlayerModeChangeListener;
 import swarogi.models.*;
@@ -39,59 +44,84 @@ public class BuildingPlayerMode extends SelectionPlayerMode {
         this.pathfinding = new Pathfinding(unit.getTile(), unit.getSteps());
         this.pathfindingTiles = pathfinding.getAccessibleTiles();
         this.buildingTiles = new ArrayList<>();
+        setIcons();
+    }
+
+    private void setIcons() {
+        // Wstecz
+        {
+            Point pos = RenderingHelper.getCancelIconPosition();
+            Icon icon = new DiamondIcon();
+            icon.hAlign = HorizontalAlign.RIGHT;
+            icon.vAlign = VerticalAlign.TOP;
+            icon.x = pos.x;
+            icon.y = pos.y;
+            icon.actionButton = ActionButton.CANCEL;
+            icon.textureKey = Configuration.CANCEL_ICON_NAME;
+            icon.hoverText = "Wstecz [PPM]";
+            icon.clickAction = this::exitMode;
+            icon.hoverAction = () -> setText(icon.hoverText);
+            icon.unhoverAction = () -> setText(null);
+            addIcon(icon);
+        }
+
+        Point pos = RenderingHelper.getRegularIconPosition(true);
+        int x = pos.x;
+        int y = pos.y;
+        int dx = Configuration.ICON_MARGIN + Configuration.ICON_SIZE;
+
+        List<BuildingData> createdBuildings = unit.getUnitData().getCreatedBuildings();
+        for (int i = 0; i < createdBuildings.size(); ++i) {
+            BuildingData building = createdBuildings.get(i);
+
+            Icon icon = new DiamondIcon();
+            icon.hAlign = HorizontalAlign.LEFT;
+            icon.vAlign = VerticalAlign.BOTTOM;
+            icon.x = x + i * dx;
+            icon.y = y;
+            icon.actionButton = ActionButton.toOption(i);
+            icon.textureKey = building.getTextureName();
+
+            if (building.getRequiredTribeLevel() > player.getTribeLevel()) {
+                icon.lockedFlag = true;
+                icon.hoverText = building.getName() + " (wymagany poziom " + building.getRequiredTribeLevel()
+                        + ") " + building.getDescription();
+            }
+            else if (player.getCommandPoints() < Configuration.BUILD_ACTION_POINTS_COST) {
+                icon.lockedFlag = true;
+                icon.hoverText = building.getName() + " (żywność: " + building.getFoodCost()
+                        + " drewno: " + building.getWoodCost()
+                        + ") " + building.getDescription();
+            }
+            else if (player.areRequirementsMet(building)) {
+                icon.hoverText = building.getName() + " [" + Integer.toString(i + 1) + "] (żywność: " + building.getFoodCost()
+                        + " drewno: " + building.getWoodCost()
+                        + ") " + building.getDescription();
+                icon.clickAction = () -> changeBuilding(building);
+            }
+            else {
+                icon.noFundsFlag = true;
+                icon.hoverText = building.getName() + " (żywność: " + building.getFoodCost()
+                        + " drewno: " + building.getWoodCost()
+                        + ") " + building.getDescription();
+            }
+
+            icon.hoverAction = () -> setText(icon.hoverText);
+            icon.unhoverAction = () -> setText(null);
+            addIcon(icon);
+        }
     }
 
     @Override
     public void update() {
 
+        if (checkGuiInteraction()) { return; }
+
         ControlsProvider controlsProvider = getControls();
 
-        // Wyjdź z trybu budowania
-        if (controlsProvider.isButtonDown(ActionButton.CANCEL)) {
-            changePlayerMode(new UnitCommandPlayerAction(getPlayer(), getListener(), getMap(), unit));
-            return;
-        }
-
-        boolean updateNeeded = controlsProvider.hasMousePositionChanged() || getCamera().hasPositionChanged();
-
-        // Wybierz budynek
-        if (player.getCommandPoints() > 0 && player.hasCommandPoints(Configuration.BUILDING_COMMAND_POINTS_COST)
-                && unit.hasActionPoints(Configuration.BUILD_ACTION_POINTS_COST)) {
-            ActionButton selectedButton = controlsProvider.getFirstSelectedOption();
-            if (selectedButton != null) {
-                int option = ActionButton.getOption(selectedButton);
-                List<BuildingData> buildings = unit.getUnitData().getCreatedBuildings();
-                if (option < buildings.size() && buildings.get(option) != plannedBuilding) {
-                    BuildingData buildingSelected = buildings.get(option);
-                    if (player.areRequirementsMet(buildingSelected)) {
-                        plannedBuilding = buildingSelected;
-                        updateNeeded = true;
-                    }
-                }
-            }
-        }
-
-        Tile hoverTile = getHoverTile();
-
         if (plannedBuilding != null) {
-            if (updateNeeded) {
-                if (hoverTile != null) {
-                    buildingTiles = TilesSelection.get(plannedBuilding.getPlacingTileGroup(), hoverTile);
-                    isPositionValid = false;
-                    if (Movement.canPlace(plannedBuilding, hoverTile)) {
-                        List<Tile> adjacentTiles = Tile.getAdjacentTiles(buildingTiles);
-                        for (Tile tile : adjacentTiles) {
-                            if (pathfinding.canAccess(tile)) {
-                                isPositionValid = true;
-                                break;
-                            }
-                        }
-                    }
-                }
-                else {
-                    buildingTiles.clear();
-                    isPositionValid = false;
-                }
+            if (controlsProvider.hasMousePositionChanged() || getCamera().hasPositionChanged()) {
+                updateHover();
             }
 
             if (controlsProvider.isButtonDown(ActionButton.CONFIRM)) {
@@ -105,7 +135,7 @@ public class BuildingPlayerMode extends SelectionPlayerMode {
 
                         unit.setPath(pathfinding.getPathTo(closestTile));
                         listener.addAction(new MovementAction(unit, false)); // Nie zużywaj punktu akcji na ten ruch
-                        listener.addAction(new CreateBuildingAction(plannedBuilding, map, hoverTile, player, unit));
+                        listener.addAction(new CreateBuildingAction(plannedBuilding, map, getHoverTile(), player, unit));
                         changePlayerMode(new SelectionPlayerMode(getPlayer(), listener, map));
                     }
                 }
@@ -113,12 +143,35 @@ public class BuildingPlayerMode extends SelectionPlayerMode {
         }
     }
 
+    private void updateHover() {
+        Tile hoverTile = getHoverTile();
+        if (hoverTile != null) {
+            buildingTiles = TilesSelection.get(plannedBuilding.getPlacingTileGroup(), hoverTile);
+            isPositionValid = false;
+            if (Movement.canPlace(plannedBuilding, hoverTile)) {
+                List<Tile> adjacentTiles = Tile.getAdjacentTiles(buildingTiles);
+                for (Tile tile : adjacentTiles) {
+                    if (pathfinding.canAccess(tile)) {
+                        isPositionValid = true;
+                        break;
+                    }
+                }
+            }
+        }
+        else {
+            buildingTiles.clear();
+            isPositionValid = false;
+        }
+    }
+
     @Override
     public void renderSelection(Graphics g, GameCamera camera) {
 
-        TileSelectionTag buildingTag = isPositionValid ? TileSelectionTag.INACTIVE_POSITIVE : TileSelectionTag.INACTIVE_NEGATIVE;
-        for (Tile tile : buildingTiles) {
-            renderTile(g, tile, camera, buildingTag);
+        if (!isGuiInteraction()) {
+            TileSelectionTag buildingTag = isPositionValid ? TileSelectionTag.INACTIVE_POSITIVE : TileSelectionTag.INACTIVE_NEGATIVE;
+            for (Tile tile : buildingTiles) {
+                renderTile(g, tile, camera, buildingTag);
+            }
         }
 
         for (Tile tile : pathfindingTiles) {
@@ -129,39 +182,22 @@ public class BuildingPlayerMode extends SelectionPlayerMode {
     }
 
     @Override
-    public void renderGui(Graphics g, Dimension dimension, Font font) {
-        renderTextBack(g, dimension);
-        List<BuildingData> createdBuildings = unit.getUnitData().getCreatedBuildings();
-        int n = createdBuildings.size();
-        int dx = dimension.width / n;
-        int paddingLeft = 20;
-        int y = dimension.height - ContentManager.bottomTextShadow.getHeight() / 2;
-        for (int i = 0; i < n; ++i) {
-            BuildingData building = createdBuildings.get(i);
+    public void renderGui(Graphics g, Dimension size, Font font) {
+        RenderingHelper.drawSummaryBox(g, size);
+        RenderingHelper.drawUnitSummary(g, size, unit);
+        RenderingHelper.drawTextArea(g, size, getText());
+        RenderingHelper.drawIcons(g, getIcons(), size);
+    }
 
-            if (building.getRequiredTribeLevel() > player.getTribeLevel()) {
-                g.setColor(Color.black);
-                g.drawString(displayString(building)
-                        + "\n(wym. poz. " + Integer.toString(building.getRequiredTribeLevel()) + ")", i * dx + paddingLeft, y);
-            }
-            else if (player.getCommandPoints() == 0) {
-                g.setColor(Color.black);
-                g.drawString(displayString(building), i * dx + paddingLeft, y);
-            }
-            else if (player.areRequirementsMet(building)) {
-                g.setColor(Color.white);
-                g.drawString("["  + Integer.toString(i + 1) + "] " + displayString(building), i * dx + paddingLeft, y);
-            }
-            else {
-                g.setColor(Color.red);
-                g.drawString(displayString(building), i * dx + paddingLeft, y);
-            }
+    private void changeBuilding(BuildingData building) {
+        if (building != plannedBuilding && player.areRequirementsMet(building)) {
+            plannedBuilding = building;
         }
     }
 
-    private String displayString(BuildingData building) {
-        return building.getName()
-                + " - Ż: " + Integer.toString(building.getFoodCost())
-                + " | D: " + Integer.toString(building.getWoodCost());
+    private void exitMode() {
+        changePlayerMode(new UnitCommandPlayerAction(getPlayer(), getListener(), getMap(), unit));
     }
+
+
 }

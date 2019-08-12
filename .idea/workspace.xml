@@ -13,7 +13,7 @@
     <session id="-892934446">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="14" />
+          <entry key="project.closed" value="16" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="2" />
           <entry key="project.open.time.21" value="1" />
@@ -26,30 +26,31 @@
           <entry key="project.open.time.4" value="3" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.52" value="1" />
-          <entry key="project.opened" value="18" />
+          <entry key="project.open.time.96" value="1" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="108452" />
+          <entry key="java" value="120718" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="108452" />
+          <entry key="JAVA" value="120718" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="593" />
+          <entry key="java" value="645" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="593" />
+          <entry key="JAVA" value="645" />
           <entry key="PLAIN_TEXT" value="3" />
         </counts>
       </usages-collector>
@@ -61,108 +62,96 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Swarogi.java">
+        <entry file="file://$PROJECT_DIR$/src/swarogi/game/GamePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/swarogi/engine/MapLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="45" column="71" selection-start-line="45" selection-start-column="71" selection-end-line="45" selection-end-column="71" />
+            <state relative-caret-position="436">
+              <caret line="117" selection-start-line="117" selection-end-line="117" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#GamePanel#0;class#GamePanel#0" />
+                <element signature="method#updateVisibleTiles#0;class#GamePanel#0" />
+                <element signature="method#updateModeSelection#0;class#GamePanel#0" />
+                <element signature="method#initializePlayer#0;class#GamePanel#0" />
+                <element signature="method#nextPlayer#0;class#GamePanel#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/swarogi/game/GamePanel.java">
+        <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/UnitCommandPlayerAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="259" lean-forward="true" selection-start-line="259" selection-end-line="259" />
+            <state relative-caret-position="422">
+              <caret line="370" column="75" lean-forward="true" selection-start-line="370" selection-start-column="75" selection-end-line="370" selection-end-column="75" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#GamePanel#0;class#GamePanel#0" />
-                <element signature="method#updateVisibleTiles#0;class#GamePanel#0" />
-                <element signature="e#9725#9731#0" expanded="true" />
-                <element signature="method#updateModeSelection#0;class#GamePanel#0" />
-                <element signature="method#drawBorder#0;class#GamePanel#0" />
-                <element signature="e#15738#15739#0" expanded="true" />
-                <element signature="e#15789#15790#0" expanded="true" />
-                <element signature="e#15847#15848#0" expanded="true" />
-                <element signature="e#15887#15888#0" expanded="true" />
+                <element signature="method#UnitCommandPlayerAction#0;class#UnitCommandPlayerAction#0" />
+                <element signature="method#renderSelection#0;class#UnitCommandPlayerAction#0" />
+                <element signature="method#setIcons#0;class#UnitCommandPlayerAction#0" />
+                <element signature="e#12869#12870#0" expanded="true" />
+                <element signature="e#12920#12921#0" expanded="true" />
+                <element signature="e#12958#12959#0" expanded="true" />
+                <element signature="e#13032#13033#0" expanded="true" />
+                <element signature="e#15251#15252#0" expanded="true" />
+                <element signature="e#15346#15347#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/swarogi/game/Renderer.java">
+        <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/AttackPlayerMode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="151" column="80" lean-forward="true" selection-start-line="151" selection-start-column="80" selection-end-line="151" selection-end-column="80" />
-              <folding>
-                <element signature="method#render#0;class#Renderer#0" />
-                <element signature="method#render#1;class#Renderer#0" />
-                <element signature="method#render#2;class#Renderer#0" />
-                <element signature="method#render#3;class#Renderer#0" />
-                <element signature="method#renderHpBar#0;class#Renderer#0" />
-              </folding>
+            <state relative-caret-position="425">
+              <caret line="289" selection-start-line="289" selection-end-line="289" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/swarogi/enums/TerrainType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="38" lean-forward="true" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/swarogi/game/Tile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3162">
-              <caret line="201" column="13" selection-start-line="201" selection-start-column="13" selection-end-line="201" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/swarogi/common/ContentManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="135" column="84" lean-forward="true" selection-start-line="135" selection-start-column="84" selection-end-line="135" selection-end-column="84" />
-              <folding>
-                <element signature="e#536#537#0" expanded="true" />
-                <element signature="e#598#599#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/swarogi/common/TerrainExtensionInfo.java">
+        <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/BuildingCommandPlayerMode.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+              <caret line="223" column="79" selection-start-line="223" selection-start-column="79" selection-end-line="223" selection-end-column="79" />
+              <folding>
+                <element signature="e#8242#8243#0" expanded="true" />
+                <element signature="e#8337#8338#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/swarogi/common/Configuration.java">
+        <entry file="file://$PROJECT_DIR$/src/swarogi/actions/AttackAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="54" column="55" selection-start-line="54" selection-start-column="55" selection-end-line="54" selection-end-column="55" />
+            <state relative-caret-position="204">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/swarogi/engine/Targeting.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="50" column="117" selection-start-line="50" selection-start-column="117" selection-end-line="50" selection-end-column="117" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/swarogi/datamodels/AttackData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="36" column="49" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/swarogi/models/Unit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="164">
+              <caret line="163" column="30" selection-start-line="163" selection-start-column="30" selection-end-line="163" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -171,10 +160,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/swarogi/enums/ActionButton.java">
+        <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/SummaryPlayerMode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+            <state relative-caret-position="68">
+              <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1351#1352#0" expanded="true" />
+                <element signature="e#1371#1372#0" expanded="true" />
+                <element signature="method#setIcons#0;class#SummaryPlayerAction#0" />
+                <element signature="e#4170#4171#0" expanded="true" />
+                <element signature="e#4265#4266#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/SelectionPlayerMode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="449">
+              <caret line="147" column="17" lean-forward="true" selection-start-line="147" selection-start-column="17" selection-end-line="147" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -203,22 +209,12 @@
       <find>getDefe</find>
       <find>updateBuil</find>
       <find>onse</find>
+      <find>exitMode(</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/swarogi/enums/ArmorType.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/playermodes/TribePathsPlayerMode.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/datamodels/EffectData.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/datamodels/ValueEffectData.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/interfaces/PlayerUnit.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/datamodels/AttackData.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/actions/MovementAction.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/datamodels/UnitData.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/datamodels/AbstractPlaceableData.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/interfaces/Destructible.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/actions/AttackAction.java" />
         <option value="$PROJECT_DIR$/src/swarogi/models/Player.java" />
         <option value="$PROJECT_DIR$/src/swarogi/actions/CreateBuildingAction.java" />
         <option value="$PROJECT_DIR$/src/swarogi/game/Game.java" />
@@ -227,38 +223,49 @@
         <option value="$PROJECT_DIR$/maps/map01.txt" />
         <option value="$PROJECT_DIR$/src/swarogi/playermodes/DebugOthersPlacingPlayerMode.java" />
         <option value="$PROJECT_DIR$/src/swarogi/playermodes/DebugChangeTerrainPlayerMode.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/game/GameControls.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/playermodes/SelectionPlayerMode.java" />
         <option value="$PROJECT_DIR$/src/swarogi/enums/TargetType.java" />
         <option value="$PROJECT_DIR$/src/swarogi/enums/Characteristic.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/engine/Targeting.java" />
         <option value="$PROJECT_DIR$/src/swarogi/datamodels/ReseachData.java" />
         <option value="$PROJECT_DIR$/src/swarogi/models/UnitContainer.java" />
         <option value="$PROJECT_DIR$/src/swarogi/actions/CreateUnitAction.java" />
         <option value="$PROJECT_DIR$/src/swarogi/datamodels/BuildingData.java" />
         <option value="$PROJECT_DIR$/src/swarogi/game/TilesSelection.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/datamodels/SkillData.java" />
         <option value="$PROJECT_DIR$/src/swarogi/engine/Movement.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/playermodes/BuildingPlayerMode.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/playermodes/SkillUsePlayerMode.java" />
         <option value="$PROJECT_DIR$/src/swarogi/actions/SkillAction.java" />
         <option value="$PROJECT_DIR$/src/swarogi/models/Unit.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/playermodes/BuildingCommandPlayerMode.java" />
         <option value="$PROJECT_DIR$/src/swarogi/models/Building.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/playermodes/UnitCommandPlayerAction.java" />
         <option value="$PROJECT_DIR$/src/swarogi/playermodes/DebugBuildingsPlacingPlayerMode.java" />
         <option value="$PROJECT_DIR$/src/swarogi/engine/MapLoader.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/data/Database.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Swarogi.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/enums/ActionButton.java" />
         <option value="$PROJECT_DIR$/src/swarogi/game/Tile.java" />
         <option value="$PROJECT_DIR$/src/swarogi/common/TerrainExtensionInfo.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/common/Configuration.java" />
-        <option value="$PROJECT_DIR$/src/swarogi/common/ContentManager.java" />
         <option value="$PROJECT_DIR$/src/swarogi/enums/TerrainType.java" />
         <option value="$PROJECT_DIR$/src/swarogi/game/Renderer.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/datamodels/SkillData.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/datamodels/UnitData.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/enums/HorizontalAlign.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/enums/VerticalAlign.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/playermodes/RenderingHelper.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/game/GameControls.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/gui/DiamondIcon.java" />
         <option value="$PROJECT_DIR$/src/swarogi/game/GamePanel.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/data/Database.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/gui/Icon.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/enums/ActionButton.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/playermodes/SkillUsePlayerMode.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/playermodes/PlayerMode.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/playermodes/AttackPlayerMode.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/playermodes/BuildingPlayerMode.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/gui/RenderingHelper.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/common/ContentManager.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/common/Configuration.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/playermodes/TribePathsPlayerMode.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/playermodes/SummaryPlayerMode.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/playermodes/SelectionPlayerMode.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/playermodes/BuildingCommandPlayerMode.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/engine/Targeting.java" />
+        <option value="$PROJECT_DIR$/src/swarogi/playermodes/UnitCommandPlayerAction.java" />
       </list>
     </option>
   </component>
@@ -273,12 +280,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="SwarogiPrototyp" type="b2602c69:ProjectViewProjectNode" />
               <item name="SwarogiPrototyp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SwarogiPrototyp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SwarogiPrototyp" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SwarogiPrototyp" type="b2602c69:ProjectViewProjectNode" />
@@ -290,6 +303,13 @@
               <item name="SwarogiPrototyp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="swarogi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SwarogiPrototyp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SwarogiPrototyp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="swarogi" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SwarogiPrototyp" type="b2602c69:ProjectViewProjectNode" />
@@ -303,22 +323,41 @@
               <item name="SwarogiPrototyp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="swarogi" type="462c0819:PsiDirectoryNode" />
-              <item name="enums" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SwarogiPrototyp" type="b2602c69:ProjectViewProjectNode" />
               <item name="SwarogiPrototyp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="swarogi" type="462c0819:PsiDirectoryNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SwarogiPrototyp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SwarogiPrototyp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="swarogi" type="462c0819:PsiDirectoryNode" />
+              <item name="playermodes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SwarogiPrototyp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SwarogiPrototyp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="swarogi" type="462c0819:PsiDirectoryNode" />
+              <item name="playermodes" type="462c0819:PsiDirectoryNode" />
+              <item name="AttackPlayerMode.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -384,14 +423,14 @@
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.74097663" visible="true" weight="0.16687042" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.74097663" visible="true" weight="0.16870415" />
       <window_info id="Structure" order="1" sideWeight="0.25902337" side_tool="true" weight="0.16838996" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.50190115" side_tool="true" weight="0.16838996" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.3295964" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3295964" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.29035875" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.29035875" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.39349777" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -416,148 +455,12 @@
           <url>file://$PROJECT_DIR$/src/swarogi/actions/AttackAction.java</url>
           <line>34</line>
           <properties />
-          <option name="timeStamp" value="16" />
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/swarogi/datamodels/AbstractPlaceableData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/datamodels/UnitData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="40" column="48" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/interfaces/Destructible.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/actions/AttackAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="71" column="56" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/game/GameWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/actions/CreateBuildingAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="47" column="79" selection-start-line="47" selection-start-column="79" selection-end-line="47" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/models/Obstacle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/enums/Direction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/game/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/maps/map01.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/lang/Integer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="612" selection-start-line="612" selection-end-line="612" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/DebugOthersPlacingPlayerMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="75" column="89" selection-start-line="75" selection-start-column="89" selection-end-line="75" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/DebugChangeTerrainPlayerMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="40" column="32" lean-forward="true" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/game/GameControls.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="72" column="9" lean-forward="true" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/AttackPlayerMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="206" column="60" lean-forward="true" selection-start-line="205" selection-start-column="16" selection-end-line="206" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/enums/TargetType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/enums/Characteristic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/models/UnitContainer.java" />
-    <entry file="file://$PROJECT_DIR$/src/swarogi/datamodels/ReseachData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/swarogi/game/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -586,13 +489,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/datamodels/SkillData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-333">
-          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/swarogi/datamodels/EffectData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -604,47 +500,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="53" />
-          <folding>
-            <element signature="e#1946#2012#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/BuildingPlayerMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="98" selection-start-line="98" selection-end-line="105" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/models/Unit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="313" column="93" selection-start-line="313" selection-start-column="93" selection-end-line="313" selection-end-column="93" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/models/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="140" column="53" selection-start-line="140" selection-start-column="53" selection-end-line="140" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/engine/Targeting.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1201">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/SkillUsePlayerMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
         </state>
       </provider>
     </entry>
@@ -673,52 +528,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/BuildingCommandPlayerMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="45" column="66" selection-start-line="45" selection-start-column="66" selection-end-line="45" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/swarogi/engine/Movement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
           <caret line="54" column="68" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/models/Building.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2074">
-          <caret line="166" column="45" selection-start-line="166" selection-start-column="45" selection-end-line="166" selection-end-column="45" />
-          <folding>
-            <element signature="e#852#853#0" expanded="true" />
-            <element signature="e#893#894#0" expanded="true" />
-            <element signature="e#1551#1926#0" />
-            <element signature="e#3130#3368#0" />
-            <element signature="e#3374#3686#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/SelectionPlayerMode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/UnitCommandPlayerAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="103" column="82" selection-start-line="103" selection-start-column="82" selection-end-line="103" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/data/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13464">
-          <caret line="797" column="62" selection-start-line="797" selection-start-column="62" selection-end-line="797" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -753,30 +566,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/common/Configuration.java">
+    <entry file="file://$PROJECT_DIR$/src/swarogi/interfaces/ControlsProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="54" column="55" selection-start-line="54" selection-start-column="55" selection-end-line="54" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/enums/ActionButton.java">
+    <entry file="file://$PROJECT_DIR$/src/swarogi/datamodels/SkillData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+        <state relative-caret-position="595">
+          <caret line="41" selection-start-line="41" selection-end-line="43" selection-end-column="66" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/common/ContentManager.java">
+    <entry file="file://$PROJECT_DIR$/src/swarogi/datamodels/AbstractPlaceableData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="135" column="84" lean-forward="true" selection-start-line="135" selection-start-column="84" selection-end-line="135" selection-end-column="84" />
+        <state relative-caret-position="102">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="13" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/game/Renderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="115" column="75" selection-start-line="115" selection-start-column="75" selection-end-line="115" selection-end-column="75" />
           <folding>
-            <element signature="e#536#537#0" expanded="true" />
-            <element signature="e#598#599#0" expanded="true" />
+            <element signature="method#render#0;class#Renderer#0" />
+            <element signature="method#render#1;class#Renderer#0" />
+            <element signature="method#render#3;class#Renderer#0" />
+            <element signature="method#render#4;class#Renderer#0" />
           </folding>
         </state>
       </provider>
@@ -784,42 +603,365 @@
     <entry file="file://$PROJECT_DIR$/src/swarogi/enums/TerrainType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="38" lean-forward="true" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/swarogi/game/Renderer.java">
+    <entry file="file://$PROJECT_DIR$/src/swarogi/datamodels/UnitData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="151" column="80" lean-forward="true" selection-start-line="151" selection-start-column="80" selection-end-line="151" selection-end-column="80" />
+        <state relative-caret-position="323">
+          <caret line="53" column="86" selection-start-line="53" selection-start-column="86" selection-end-line="53" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/enums/HorizontalAlign.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/enums/VerticalAlign.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/game/GameControls.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="156" column="9" lean-forward="true" selection-start-line="156" selection-start-column="9" selection-end-line="156" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/gui/DiamondIcon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
-            <element signature="method#render#0;class#Renderer#0" />
-            <element signature="method#render#1;class#Renderer#0" />
-            <element signature="method#render#2;class#Renderer#0" />
-            <element signature="method#render#3;class#Renderer#0" />
-            <element signature="method#renderHpBar#0;class#Renderer#0" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.desktop/javax/imageio/ImageIO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="1307" selection-start-line="1307" selection-end-line="1307" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/jdk/internal/misc/Unsafe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="2293" column="23" selection-start-line="2293" selection-start-column="23" selection-end-line="2293" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/datamodels/ReseachData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-44">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/datamodels/UpgradeData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="31" lean-forward="true" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/gui/Icon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="19" column="32" lean-forward="true" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/enums/ActionButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="54" column="41" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/models/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/PlayerMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="125" column="30" lean-forward="true" selection-start-line="125" selection-start-column="30" selection-end-line="125" selection-end-column="30" />
+          <folding>
+            <element signature="e#2334#2335#0" expanded="true" />
+            <element signature="e#2390#2391#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/SkillUsePlayerMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="173" column="9" selection-start-line="173" selection-start-column="9" selection-end-line="173" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/BuildingPlayerMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-323">
+          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
+          <folding>
+            <element signature="method#setIcons#0;class#BuildingPlayerMode#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/gui/RenderingHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="120" column="27" lean-forward="true" selection-start-line="120" selection-start-column="27" selection-end-line="120" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/data/Database.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1800">
+          <caret line="283" column="36" selection-start-line="283" selection-start-column="36" selection-end-line="283" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/common/ContentManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="109" column="89" lean-forward="true" selection-start-line="109" selection-start-column="89" selection-end-line="109" selection-end-column="89" />
+          <folding>
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#598#599#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/models/Building.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="185" column="19" selection-start-line="185" selection-start-column="19" selection-end-line="185" selection-end-column="19" />
+          <folding>
+            <element signature="e#852#853#0" expanded="true" />
+            <element signature="e#893#894#0" expanded="true" />
+            <element signature="e#1551#1926#0" />
+            <element signature="e#3130#3368#0" />
+            <element signature="e#3374#3686#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/common/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-380">
+          <caret line="26" column="47" lean-forward="true" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/TribePathsPlayerMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/SummaryPlayerMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1351#1352#0" expanded="true" />
+            <element signature="e#1371#1372#0" expanded="true" />
+            <element signature="method#setIcons#0;class#SummaryPlayerAction#0" />
+            <element signature="e#4170#4171#0" expanded="true" />
+            <element signature="e#4265#4266#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/SelectionPlayerMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="147" column="17" lean-forward="true" selection-start-line="147" selection-start-column="17" selection-end-line="147" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/BuildingCommandPlayerMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="223" column="79" selection-start-line="223" selection-start-column="79" selection-end-line="223" selection-end-column="79" />
+          <folding>
+            <element signature="e#8242#8243#0" expanded="true" />
+            <element signature="e#8337#8338#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/AttackPlayerMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="289" selection-start-line="289" selection-end-line="289" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/swarogi/game/GamePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="259" lean-forward="true" selection-start-line="259" selection-end-line="259" />
+        <state relative-caret-position="436">
+          <caret line="117" selection-start-line="117" selection-end-line="117" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#GamePanel#0;class#GamePanel#0" />
             <element signature="method#updateVisibleTiles#0;class#GamePanel#0" />
-            <element signature="e#9725#9731#0" expanded="true" />
             <element signature="method#updateModeSelection#0;class#GamePanel#0" />
-            <element signature="method#drawBorder#0;class#GamePanel#0" />
-            <element signature="e#15738#15739#0" expanded="true" />
-            <element signature="e#15789#15790#0" expanded="true" />
-            <element signature="e#15847#15848#0" expanded="true" />
-            <element signature="e#15887#15888#0" expanded="true" />
+            <element signature="method#initializePlayer#0;class#GamePanel#0" />
+            <element signature="method#nextPlayer#0;class#GamePanel#0" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/models/Unit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="163" column="30" selection-start-line="163" selection-start-column="30" selection-end-line="163" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/datamodels/AttackData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="36" column="49" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/actions/AttackAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/engine/Targeting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="50" column="117" selection-start-line="50" selection-start-column="117" selection-end-line="50" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/swarogi/playermodes/UnitCommandPlayerAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="370" column="75" lean-forward="true" selection-start-line="370" selection-start-column="75" selection-end-line="370" selection-end-column="75" />
+          <folding>
+            <element signature="method#UnitCommandPlayerAction#0;class#UnitCommandPlayerAction#0" />
+            <element signature="method#renderSelection#0;class#UnitCommandPlayerAction#0" />
+            <element signature="method#setIcons#0;class#UnitCommandPlayerAction#0" />
+            <element signature="e#12869#12870#0" expanded="true" />
+            <element signature="e#12920#12921#0" expanded="true" />
+            <element signature="e#12958#12959#0" expanded="true" />
+            <element signature="e#13032#13033#0" expanded="true" />
+            <element signature="e#15251#15252#0" expanded="true" />
+            <element signature="e#15346#15347#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>11</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>SwarogiPrototype</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

@@ -23,8 +23,8 @@ public final class Configuration {
     public static final int MIN_ATTACK_DAMAGE = 1;
     public static final int BASE_REGENERATION = 6;
     public static final int INITIAL_TRIBE_LEVEL = 1;
-    public static final int INITIAL_FOOD = 200;
-    public static final int INITIAL_WOOD = 100;
+    public static final int INITIAL_FOOD = 300;
+    public static final int INITIAL_WOOD = 200;
     public static final int INITIAL_ARMY_LIMIT = 30;
     public static final int INITIAL_COMMAND_POINTS = 10;
 
@@ -48,6 +48,19 @@ public final class Configuration {
 
     public static final int MAX_PLAYERS = 6;
     public static final List<Color> PLAYER_COLORS;
+
+    public static final int TEXT_AREA_HEIGHT = 50;
+    public static final int LEADER_MARK_TRANSLATION_Y = -16;
+
+    public static final int ICON_MARGIN = 25;
+    public static final int ICON_SIZE = 100;
+
+    public static final String ATTACK_ACTION_ICON_NAME = "Attack";
+    public static final String BUILD_ACTION_ICON_NAME = "Build";
+    public static final String TRIBE_PATHS_ICON_NAME = "TribePaths";
+    public static final String CANCEL_ICON_NAME = "Cancel";
+    public static final String NEXT_UNIT_ICON_NAME = "NextUnit";
+    public static final String EXIT_BUILDING_ICON_NAME = "ExitBuilding";
 
     public static boolean areHpBarsVisible = true;
     public static boolean isHexagonalMeshVisible = true;

@@ -113,6 +113,7 @@ public final class Database {
 
         SkillData enterBuilding = new SkillData();
         enterBuilding.setName("Wejdź do budynku");
+        enterBuilding.setIconName("SkillEnterBuilding");
         enterBuilding.setDescription("TODO");
         enterBuilding.setCommandPoints(1);
         enterBuilding.setFoodCost(0);
@@ -127,6 +128,7 @@ public final class Database {
 
         SkillData heroDamageBonus = new SkillData();
         heroDamageBonus.setName("Krzyk bojowy");
+        heroDamageBonus.setIconName("SkillWarCry");
         heroDamageBonus.setDescription("TODO");
         heroDamageBonus.setCommandPoints(1);
         heroDamageBonus.setFoodCost(100);
@@ -143,6 +145,7 @@ public final class Database {
 
         SkillData heroReplenishActionPoints = new SkillData();
         heroReplenishActionPoints.setName("Rozkaz dowódcy");
+        heroReplenishActionPoints.setIconName("SkillOrder");
         heroReplenishActionPoints.setDescription("TODO");
         heroReplenishActionPoints.setCommandPoints(1);
         heroReplenishActionPoints.setFoodCost(50);
@@ -159,6 +162,7 @@ public final class Database {
 
         SkillData volkhvArmorBonus = new SkillData();
         volkhvArmorBonus.setName("Pancerz Swaroga");
+        volkhvArmorBonus.setIconName("SkillArmorBonus");
         volkhvArmorBonus.setDescription("TODO");
         volkhvArmorBonus.setCommandPoints(1);
         volkhvArmorBonus.setFoodCost(40);
@@ -174,6 +178,7 @@ public final class Database {
 
         SkillData thunderStrike = new SkillData();
         thunderStrike.setName("Gniew Peruna");
+        thunderStrike.setIconName("SkillThunderStrike");
         thunderStrike.setDescription("TODO");
         thunderStrike.setCommandPoints(1);
         thunderStrike.setFoodCost(40);
@@ -192,6 +197,7 @@ public final class Database {
 
         SkillData volkhvRegeneration = new SkillData();
         volkhvRegeneration.setName("Łaska Mokoszy");
+        volkhvRegeneration.setIconName("SkillHeal");
         volkhvRegeneration.setDescription("TODO");
         volkhvRegeneration.setCommandPoints(1);
         volkhvRegeneration.setFoodCost(30);
@@ -205,10 +211,13 @@ public final class Database {
         volkhvRegeneration.addTarget(TargetType.Destructible);
         volkhvRegeneration.addTarget(TargetType.Living);
 
+        //.setIconName("SkillExitBuilding");
+        //.setIconName("SkillRepair");
+
 
 
         IncreasedMeeleDamage = new UpgradeData(); // Premia procentowa
-        IncreasedMeeleDamage.setDescription("Zwiększa obrażenia zadawane przez Wojowników i Jeźdźców o {value}%.");
+        IncreasedMeeleDamage.setDescription("Zwiększa obrażenia zadawane przez Wojowników i Jeźdźców o {value}%. ");
         IncreasedMeeleDamage.addValue(10);
         IncreasedMeeleDamage.addValue(20);
         IncreasedMeeleDamage.addValue(30);
@@ -216,7 +225,7 @@ public final class Database {
         IncreasedMeeleDamage.addValue(50);
 
         IncreasedMeleeBleeding = new UpgradeData(); // Dodatkowe punkty procentowe
-        IncreasedMeleeBleeding.setDescription("Zapewnia szansę {value}%, że ataki zadawane przez Wojowników i Jeźdźców wywołają efekt Krwawienia.");
+        IncreasedMeleeBleeding.setDescription("Zapewnia szansę {value}%, że ataki zadawane przez Wojowników i Jeźdźców wywołają efekt Krwawienia. ");
         IncreasedMeleeBleeding.addValue(10);
         IncreasedMeleeBleeding.addValue(20);
         IncreasedMeleeBleeding.addValue(30);
@@ -224,7 +233,7 @@ public final class Database {
         IncreasedMeleeBleeding.addValue(50);
 
         IncreasedUnitHealth = new UpgradeData(); // Premia procentowa
-        IncreasedUnitHealth.setDescription("Zwiększa maksymalne punkty wytrzymałości jednostek o {value}%.");
+        IncreasedUnitHealth.setDescription("Zwiększa maksymalne punkty wytrzymałości jednostek o {value}%. ");
         IncreasedUnitHealth.addValue(10);
         IncreasedUnitHealth.addValue(20);
         IncreasedUnitHealth.addValue(30);
@@ -232,7 +241,7 @@ public final class Database {
         IncreasedUnitHealth.addValue(50);
 
         IncreasedActionPoints = new UpgradeData(); // Wartość
-        IncreasedActionPoints.setDescription("Zwiększa maksymalną liczbę punktów akcji o {value}.");
+        IncreasedActionPoints.setDescription("Zwiększa maksymalną liczbę punktów akcji o {value}. ");
         IncreasedActionPoints.addValue(1);
         IncreasedActionPoints.addValue(2);
         IncreasedActionPoints.addValue(3);
@@ -240,7 +249,7 @@ public final class Database {
         IncreasedActionPoints.addValue(5);
 
         IncreasedMovement = new UpgradeData(); // Wartość
-        IncreasedMovement.setDescription("Zwiększa maksymalny zasięg ruchu o: {value} pól.");
+        IncreasedMovement.setDescription("Zwiększa maksymalny zasięg ruchu o: {value} pól. ");
         IncreasedMovement.addValue(1);
         IncreasedMovement.addValue(2);
         IncreasedMovement.addValue(3);
@@ -248,31 +257,31 @@ public final class Database {
         IncreasedMovement.addValue(5);
 
         IncreasedUnitArmor = new UpgradeData(); // Wartość
-        IncreasedUnitArmor.setDescription("Zwiększa pancerz Wojowników, Strzelców oraz Jeźdźców o {value}.");
+        IncreasedUnitArmor.setDescription("Zwiększa pancerz Wojowników, Strzelców oraz Jeźdźców o {value}. ");
         IncreasedUnitArmor.addValue(1);
         IncreasedUnitArmor.addValue(2);
         IncreasedUnitArmor.addValue(3);
 
         IncreasedBleedingDamage = new UpgradeData();  // Premia procentowa
-        IncreasedBleedingDamage.setDescription("Efekt krwawienia będzie powodował utratę większej liczby punktów wytrzymałości.");
+        IncreasedBleedingDamage.setDescription("Efekt krwawienia będzie powodował utratę większej liczby punktów wytrzymałości. ");
         IncreasedBleedingDamage.addValue(150);
         IncreasedBleedingDamage.addValue(200);
         IncreasedBleedingDamage.addValue(300);
 
         IncreasedRangedDamage = new UpgradeData(); // Premia procentowa
-        IncreasedRangedDamage.setDescription("Zwiększa obrażenia zadawane przez pociski Strzelców o {value}%.");
+        IncreasedRangedDamage.setDescription("Zwiększa obrażenia zadawane przez pociski Strzelców o {value}%. ");
         IncreasedRangedDamage.addValue(10);
         IncreasedRangedDamage.addValue(20);
         IncreasedRangedDamage.addValue(30);
 
         IncreasedResources = new UpgradeData(); // Premia procentowa
-        IncreasedResources.setDescription("Zwiększa ilość uzyskiwanych surowców o{value}%.");
+        IncreasedResources.setDescription("Zwiększa ilość uzyskiwanych surowców o{value}%. ");
         IncreasedResources.addValue(10);
         IncreasedResources.addValue(20);
         IncreasedResources.addValue(30);
 
         IncreasedRegeneration = new UpgradeData();  // Premia procentowa
-        IncreasedRegeneration.setDescription("Jednostki, które nie wykonały ruchu w poprzedniej turze będą odzyskiwać część wytrzymałości.");
+        IncreasedRegeneration.setDescription("Jednostki, które nie wykonały ruchu w poprzedniej turze będą odzyskiwać część wytrzymałości. ");
         IncreasedRegeneration.addValue(100);
         IncreasedRegeneration.addValue(150);
         IncreasedRegeneration.addValue(200);

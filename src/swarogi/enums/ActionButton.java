@@ -43,6 +43,17 @@ public enum ActionButton {
 
     ActionButton(int value) { this.value = value; }
     public int getValue() { return value; }
-    public static int getOption(ActionButton button) { return button.value - ActionButton.OPTION_0.value; }
+
     private final int value;
+
+    public static int getOption(ActionButton button) { return button.value - ActionButton.OPTION_0.value; }
+
+    public static ActionButton toOption(int option) {
+        int firstVal = ActionButton.OPTION_0.getValue();
+        option += firstVal;
+        if (firstVal <= option && option <= ActionButton.OPTION_9.getValue()) {
+            return ActionButton.values()[option];
+        }
+        return null;
+    }
 }

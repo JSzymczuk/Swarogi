@@ -1,11 +1,17 @@
 package swarogi.playermodes;
 
+import swarogi.common.Configuration;
 import swarogi.enums.ActionButton;
+import swarogi.enums.HorizontalAlign;
 import swarogi.enums.TileSelectionTag;
+import swarogi.enums.VerticalAlign;
 import swarogi.game.GameCamera;
 import swarogi.game.GameMap;
 import swarogi.game.Tile;
 import swarogi.game.TilesSelection;
+import swarogi.gui.DiamondIcon;
+import swarogi.gui.Icon;
+import swarogi.gui.RenderingHelper;
 import swarogi.interfaces.Placeable;
 import swarogi.interfaces.PlayerModeChangeListener;
 import swarogi.interfaces.PlayerUnit;
@@ -28,6 +34,20 @@ public class SelectionPlayerMode extends PlayerMode {
         super(player, listener);
         this.map = map;
         hoveredTiles = new ArrayList<>();
+
+        Point pos = RenderingHelper.getTribePathIconPosition();
+        Icon icon = new DiamondIcon();
+        icon.hAlign = HorizontalAlign.LEFT;
+        icon.vAlign = VerticalAlign.TOP;
+        icon.x = pos.x;
+        icon.y = pos.y;
+        icon.actionButton = ActionButton.TRIBE_PATHS_MENU;
+        icon.textureKey = Configuration.TRIBE_PATHS_ICON_NAME;
+        icon.hoverText = "Ścieżki rozwoju [R]";
+        icon.clickAction = this::enterTribePathsMode;
+        icon.hoverAction = () -> setText(icon.hoverText);
+        icon.unhoverAction = () -> setText(null);
+        addIcon(icon);
     }
 
     @Override
@@ -39,20 +59,10 @@ public class SelectionPlayerMode extends PlayerMode {
 
     @Override
     public void update() {
-        if (getControls().isButtonDown(ActionButton.TRIBE_PATHS_MENU)) {
-            changePlayerMode(new TribePathsPlayerMode(player, getListener(), this));
-            return;
-        }
+
+        if (checkGuiInteraction()) { return; }
 
         updateHoverable();
-
-        if (getControls().isButtonDown(ActionButton.NEXT_UNIT)) {
-            List<Unit> units = player.getUnits().stream().filter(u -> u.hasActionPoints(1)).collect(Collectors.toList());
-            if (units.size() > 0) {
-                changePlayerMode(new UnitCommandPlayerAction(player, getListener(), getMap(), units.get(0)));
-                return;
-            }
-        }
 
         if (getControls().isButtonDown(ActionButton.CONFIRM)) {
             onSelect();
@@ -61,14 +71,21 @@ public class SelectionPlayerMode extends PlayerMode {
 
     @Override
     public void renderSelection(Graphics g, GameCamera camera) {
-        if (hoveredTiles.size() > 0) {
-            TileSelectionTag tileSelectionTag = getPlaceableSelectionTag(player, hoveredPlaceable, TileSelectionTag.INACTIVE_POSITIVE,
-                    TileSelectionTag.INACTIVE_ALLIED, TileSelectionTag.INACTIVE_NEGATIVE, TileSelectionTag.HOVER_NEUTRAL);
+        if (!isGuiInteraction()) {
+            if (hoveredTiles.size() > 0) {
+                TileSelectionTag tileSelectionTag = getPlaceableSelectionTag(player, hoveredPlaceable, TileSelectionTag.INACTIVE_POSITIVE,
+                        TileSelectionTag.INACTIVE_ALLIED, TileSelectionTag.INACTIVE_NEGATIVE, TileSelectionTag.HOVER_NEUTRAL);
 
-            for (Tile tile : hoveredTiles) {
-                renderTile(g, tile, camera, tileSelectionTag);
+                for (Tile tile : hoveredTiles) {
+                    renderTile(g, tile, camera, tileSelectionTag);
+                }
             }
         }
+    }
+
+    @Override
+    public void renderGui(Graphics g, Dimension size, Font font) {
+        RenderingHelper.drawIcons(g, getIcons(), size);
     }
 
     protected void updateHoverable() {
@@ -117,11 +134,17 @@ public class SelectionPlayerMode extends PlayerMode {
                 if (unit.getOwner() == player) {
                     changePlayerMode(new UnitCommandPlayerAction(player, getListener(), getMap(), unit));
                 }
+                else {
+                    changePlayerMode(new SummaryPlayerMode(player, getListener(), getMap(), unit));
+                }
             }
             else if (hoveredPlaceable instanceof Building) {
                 Building building = (Building)hoveredPlaceable;
                 if (building.getOwner() == player) {
                     changePlayerMode(new BuildingCommandPlayerMode(player, getListener(), getMap(), building));
+                }
+                else {
+                    changePlayerMode(new SummaryPlayerMode(player, getListener(), getMap(), building));
                 }
             }
         }
@@ -134,5 +157,9 @@ public class SelectionPlayerMode extends PlayerMode {
     Tile getHoverTile() {
         Point mouseAbsolutePosition = getAbsoluteMousePosition();
         return map.getTileByCoordinates(mouseAbsolutePosition.x, mouseAbsolutePosition.y);
+    }
+
+    protected void enterTribePathsMode() {
+        changePlayerMode(new TribePathsPlayerMode(player, getListener(), this));
     }
 }

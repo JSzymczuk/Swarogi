@@ -27,6 +27,8 @@ public final class ContentManager {
 
     public static BufferedImage getModel(String modelName) { return models.getOrDefault(modelName, null); }
 
+    public static BufferedImage getIcon(String modelName) { return icons.getOrDefault(modelName, null); }
+
     public static BufferedImage getAnimal(TribePath animal, boolean hovered, boolean completed) {
         return hovered ? animalsHover.getOrDefault(animal, null)
                 : completed ? animalsCompleted.getOrDefault(animal, null)
@@ -38,6 +40,7 @@ public final class ContentManager {
     private final static HashMap<TerrainType, TerrainExtensionInfo> terrainExtensions;
     private final static HashMap<String, BufferedImage> models;
     private final static HashMap<String, BufferedImage> modelTextureBases;
+    private final static HashMap<String, BufferedImage> icons;
 
     private final static HashMap<TribePath, BufferedImage> animalsDefault;
     private final static HashMap<TribePath, BufferedImage> animalsHover;
@@ -54,8 +57,17 @@ public final class ContentManager {
     public final static BufferedImage borderLeft;
     public final static BufferedImage bottomTextShadow;
 
+    public final static BufferedImage bottomTextBorder;
+    public final static BufferedImage summaryBoxBorder;
+    public final static BufferedImage leaderMark;
+
     public final static BufferedImage grid;
     public final static BufferedImage tileHex;
+
+    public static final BufferedImage iconLocked;
+    public static final BufferedImage iconNoFunds;
+    public static final BufferedImage iconFrameHover;
+    public static final BufferedImage iconFrame;
 
     static {
         tileSelections = new HashMap<>();
@@ -63,6 +75,7 @@ public final class ContentManager {
         terrainExtensions = new HashMap<>();
         models = new HashMap<>();
         modelTextureBases = new HashMap<>();
+        icons = new HashMap<>();
         animalsDefault = new HashMap<>();
         animalsHover = new HashMap<>();
         animalsCompleted = new HashMap<>();
@@ -79,6 +92,33 @@ public final class ContentManager {
         borderBottomLeft = loadImage("content/gui/border-bottom-left.png");
         borderLeft = loadImage("content/gui/border-left.png");
         bottomTextShadow = loadImage("content/gui/bottom-text-shadow.png");
+
+        bottomTextBorder = loadImage("content/gui/bottom-text-border.png");
+        summaryBoxBorder = loadImage("content/gui/summary-box-border.png");
+
+        leaderMark = loadImage("content/gui/hero-crown.png");
+
+        iconLocked = loadImage("content/icons/locked.png");
+        iconNoFunds = loadImage("content/icons/no-funds.png");
+        iconFrameHover = loadImage("content/icons/frame-hover.png");
+        iconFrame = loadImage("content/icons/frame.png");
+    }
+
+    private static void loadIcons() {
+        icons.put(Configuration.ATTACK_ACTION_ICON_NAME, loadImage("content/icons/attack.png"));
+        icons.put(Configuration.BUILD_ACTION_ICON_NAME, loadImage("content/icons/build.png"));
+        icons.put(Configuration.CANCEL_ICON_NAME, loadImage("content/icons/cancel.png"));
+        icons.put(Configuration.NEXT_UNIT_ICON_NAME, loadImage("content/icons/next-unit.png"));
+        icons.put(Configuration.TRIBE_PATHS_ICON_NAME, loadImage("content/icons/tribe-paths.png"));
+        icons.put(Configuration.EXIT_BUILDING_ICON_NAME, loadImage("content/icons/exit-building.png"));
+
+        icons.put("SkillArmorBonus", loadImage("content/icons/armor.png"));
+        icons.put("SkillEnterBuilding", loadImage("content/icons/enter-building.png"));
+        icons.put("SkillHeal", loadImage("content/icons/heal.png"));
+        icons.put("SkillOrder", loadImage("content/icons/order.png"));
+        icons.put("SkillRepair", loadImage("content/icons/repair.png"));
+        icons.put("SkillThunderStrike", loadImage("content/icons/thunder-strike.png"));
+        icons.put("SkillWarCry", loadImage("content/icons/war-cry.png"));
     }
 
     public static void loadContent() {
@@ -90,6 +130,7 @@ public final class ContentManager {
         loadUnits();
         loadBuildings();
         loadAnimals();
+        loadIcons();
 
         models.put("LimeTree", loadImage("content/obstacles/lime-tree.png"));
         models.put("OakTree", loadImage("content/obstacles/oak-tree.png"));
@@ -159,6 +200,13 @@ public final class ContentManager {
         modelTextureBases.put("Volkhv", loadImage("content/units/bases/volkhv.png"));
         modelTextureBases.put("Warrior", loadImage("content/units/bases/warrior.png"));
         modelTextureBases.put("Worker", loadImage("content/units/bases/worker.png"));
+
+        icons.put("Bowman", loadImage("content/icons/bowman.png"));
+        icons.put("Hero", loadImage("content/icons/hero.png"));
+        icons.put("Rider", loadImage("content/icons/rider.png"));
+        icons.put("Volkhv", loadImage("content/icons/volkhv.png"));
+        icons.put("Warrior", loadImage("content/icons/warrior.png"));
+        icons.put("Worker", loadImage("content/icons/worker.png"));
     }
 
     private static void loadBuildings() {
@@ -173,6 +221,12 @@ public final class ContentManager {
         modelTextureBases.put("Farm", loadImage("content/buildings/bases/farm.png"));
         modelTextureBases.put("Gord", loadImage("content/buildings/bases/gord.png"));
         modelTextureBases.put("Tower", loadImage("content/buildings/bases/tower.png"));
+
+        icons.put("Barracks", loadImage("content/icons/barracks.png"));
+        icons.put("Chram", loadImage("content/icons/chram.png"));
+        icons.put("Farm", loadImage("content/icons/farm.png"));
+        icons.put("Gord", loadImage("content/icons/gord.png"));
+        icons.put("Tower", loadImage("content/icons/tower.png"));
     }
 
     private static void loadAnimals() {

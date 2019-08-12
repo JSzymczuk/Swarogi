@@ -3,6 +3,8 @@ package swarogi.game;
 import swarogi.common.Configuration;
 import swarogi.common.ContentManager;
 import swarogi.common.TerrainExtensionInfo;
+import swarogi.datamodels.UnitData;
+import swarogi.enums.Characteristic;
 import swarogi.enums.Direction;
 import swarogi.enums.TerrainType;
 import swarogi.enums.UnitDirection;
@@ -73,7 +75,7 @@ public class Renderer {
     }
 
     public void render(Unit unit) {
-        PlaceableData model = unit.getPlaceableData();
+        UnitData model = unit.getUnitData();
         Tile tile = unit.getTile();
         Point tileCenter = tile.getCenter();
         tileCenter.x -= camera.x;
@@ -105,6 +107,15 @@ public class Renderer {
             if (Configuration.areHpBarsVisible) {
                 renderHpBar(unit, tileCenter.x + (int)unit.getCustomTranslationX(),
                         y + textureHeight / 2);
+            }
+
+            if (unit.hasCharacteristic(Characteristic.Leader)) {
+                BufferedImage leaderMark = ContentManager.leaderMark;
+                graphics.drawImage(leaderMark,
+                        tileCenter.x + (int)unit.getCustomTranslationX() - leaderMark.getWidth() / 2,
+                        y + textureHeight / 2 + model.getHpBarPositionY() + Configuration.LEADER_MARK_TRANSLATION_Y
+                                - (Configuration.HP_BAR_HEIGHT + leaderMark.getHeight()) / 2,
+                        null);
             }
         }
     }

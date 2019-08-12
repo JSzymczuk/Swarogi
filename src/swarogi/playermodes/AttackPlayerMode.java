@@ -2,15 +2,17 @@ package swarogi.playermodes;
 
 import swarogi.actions.AttackAction;
 import swarogi.actions.MovementAction;
+import swarogi.common.Configuration;
 import swarogi.datamodels.AttackData;
 import swarogi.engine.Pathfinding;
-import swarogi.enums.ActionButton;
-import swarogi.enums.AttackType;
-import swarogi.enums.TileSelectionTag;
+import swarogi.enums.*;
 import swarogi.game.GameCamera;
 import swarogi.game.GameMap;
 import swarogi.game.Tile;
 import swarogi.game.TilesSelection;
+import swarogi.gui.DiamondIcon;
+import swarogi.gui.Icon;
+import swarogi.gui.RenderingHelper;
 import swarogi.interfaces.*;
 import swarogi.models.Player;
 import swarogi.models.Unit;
@@ -30,6 +32,7 @@ public class AttackPlayerMode extends SelectionPlayerMode implements TargetManag
         super(player, listener, map);
         this.unit = unit;
         this.targetManager = new TargetManager(this, unit, null);
+        setIcons();
     }
 
     @Override
@@ -41,13 +44,8 @@ public class AttackPlayerMode extends SelectionPlayerMode implements TargetManag
 
     @Override
     public void update() {
-        ControlsProvider controlsProvider = getControls();
 
-        // Wyjdź z trybu ataku
-        if (controlsProvider.isButtonDown(ActionButton.CANCEL)) {
-            changePlayerMode(new UnitCommandPlayerAction(getPlayer(), getListener(), getMap(), unit));
-            return;
-        }
+        if (checkGuiInteraction()) { return; }
 
         updateHoverable();
 
@@ -61,7 +59,7 @@ public class AttackPlayerMode extends SelectionPlayerMode implements TargetManag
         }
 
         // Zaatakuj cel
-        if (controlsProvider.isButtonDown(ActionButton.CONFIRM) && hoveredDestructible != null) {
+        if (getControls().isButtonDown(ActionButton.CONFIRM) && hoveredDestructible != null) {
             targetManager.tryAttack(hoveredDestructible);
         }
     }
@@ -102,22 +100,32 @@ public class AttackPlayerMode extends SelectionPlayerMode implements TargetManag
         // Pole wybranej jednostki
         renderTile(g, unit.getTile(), camera, TileSelectionTag.SELECTED);
 
-        // Wskazywany obiekt (jeśli nie jest celem)
-        Placeable hoveredPlaceable = getHoveredPlaceable();
-        if (hoveredPlaceable != unit && !targetManager.hasTarget((Destructible)hoveredPlaceable)) {
-            List<Tile> hoveredTiles = getHoveredTiles();
+        if (!isGuiInteraction()) {
+            // Wskazywany obiekt (jeśli nie jest celem)
+            Placeable hoveredPlaceable = getHoveredPlaceable();
+            if (hoveredPlaceable != unit && !targetManager.hasTarget((Destructible) hoveredPlaceable)) {
+                List<Tile> hoveredTiles = getHoveredTiles();
 
-            if (hoveredTiles.size() > 0) {
+                if (hoveredTiles.size() > 0) {
 
-                TileSelectionTag tileSelectionTag = getPlaceableSelectionTag(player, hoveredPlaceable,
-                        TileSelectionTag.INACTIVE_POSITIVE, TileSelectionTag.INACTIVE_ALLIED,
-                        TileSelectionTag.INACTIVE_NEGATIVE, TileSelectionTag.HOVER_NEUTRAL);
+                    TileSelectionTag tileSelectionTag = getPlaceableSelectionTag(player, hoveredPlaceable,
+                            TileSelectionTag.INACTIVE_POSITIVE, TileSelectionTag.INACTIVE_ALLIED,
+                            TileSelectionTag.INACTIVE_NEGATIVE, TileSelectionTag.HOVER_NEUTRAL);
 
-                for (Tile tile : hoveredTiles) {
-                    renderTile(g, tile, camera, tileSelectionTag);
+                    for (Tile tile : hoveredTiles) {
+                        renderTile(g, tile, camera, tileSelectionTag);
+                    }
                 }
             }
         }
+    }
+
+    @Override
+    public void renderGui(Graphics g, Dimension size, Font font) {
+        RenderingHelper.drawSummaryBox(g, size);
+        RenderingHelper.drawUnitSummary(g, size, unit);
+        RenderingHelper.drawTextArea(g, size, getText());
+        RenderingHelper.drawIcons(g, getIcons(), size);
     }
 
     // TODO: Ale że jak to java nie ma pakietowych interfejsów?!
@@ -129,6 +137,29 @@ public class AttackPlayerMode extends SelectionPlayerMode implements TargetManag
     public Player getPlayer() { return super.getPlayer(); }
     @Override
     public void changePlayerMode(PlayerMode playerMode) { super.changePlayerMode(playerMode); }
+
+    private void setIcons() {
+        // Wstecz
+        {
+            Point pos = RenderingHelper.getCancelIconPosition();
+            Icon icon = new DiamondIcon();
+            icon.hAlign = HorizontalAlign.RIGHT;
+            icon.vAlign = VerticalAlign.TOP;
+            icon.x = pos.x;
+            icon.y = pos.y;
+            icon.actionButton = ActionButton.CANCEL;
+            icon.textureKey = Configuration.CANCEL_ICON_NAME;
+            icon.hoverText = "Wstecz [PPM]";
+            icon.clickAction = this::exitMode;
+            icon.hoverAction = () -> setText(icon.hoverText);
+            icon.unhoverAction = () -> setText(null);
+            addIcon(icon);
+        }
+    }
+
+    private void exitMode() {
+        changePlayerMode(new UnitCommandPlayerAction(getPlayer(), getListener(), getMap(), unit));
+    }
 }
 
 interface TargetManagableMode {

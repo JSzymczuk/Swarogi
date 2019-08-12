@@ -2,9 +2,12 @@ package swarogi.playermodes;
 
 import swarogi.common.Configuration;
 import swarogi.common.ContentManager;
+import swarogi.common.WindowSize;
+import swarogi.enums.ActionButton;
 import swarogi.enums.TileSelectionTag;
 import swarogi.game.GameCamera;
 import swarogi.game.Tile;
+import swarogi.gui.Icon;
 import swarogi.interfaces.ControlsProvider;
 import swarogi.interfaces.Placeable;
 import swarogi.interfaces.PlayerModeChangeListener;
@@ -13,15 +16,25 @@ import swarogi.models.Player;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class PlayerMode {
 
     protected final Player player;
     private final PlayerModeChangeListener listener;
 
+    private List<Icon> icons;
+    protected Icon hoveredIcon;
+    private boolean guiInteraction;
+
+    // TODO: Tymczasowe? Albo tekst rozwinąć do okienka
+    private String currentText;
+
     PlayerMode(Player player, PlayerModeChangeListener listener) {
         this.player = player;
         this.listener = listener;
+        this.icons = new ArrayList<>();
     }
 
     public abstract boolean isDebugOnly();
@@ -31,15 +44,16 @@ public abstract class PlayerMode {
     public abstract void renderSelection(Graphics g, GameCamera camera);
     public void renderGui(Graphics g, Dimension dimension, Font font) { }
 
-    protected void renderTextBack(Graphics g, Dimension dimension) {
-        BufferedImage textBack = ContentManager.bottomTextShadow;
-        int y = dimension.height - textBack.getHeight();
-        int w = dimension.width;
-        int dx = textBack.getWidth();
-        for (int x = 0; x < w; x += dx) {
-            g.drawImage(textBack, x, y, null);
-        }
-    }
+
+    public boolean isGuiInteraction() { return this.guiInteraction; }
+
+    public void addIcon(Icon icon) { this.icons.add(icon); }
+
+    protected void setText(String text) { this.currentText = text; }
+
+    protected String getText() { return this.currentText; }
+
+    public List<Icon> getIcons() { return this.icons; }
 
     protected ControlsProvider getControls() {
         return this.player.getControls();
@@ -52,6 +66,65 @@ public abstract class PlayerMode {
     Player getPlayer() { return player; }
 
     PlayerModeChangeListener getListener() { return listener; }
+
+    protected boolean checkGuiInteraction() {
+        ControlsProvider controls = getControls();
+
+        guiInteraction = false;
+
+        // Sprawdzenie skrótów klawiaturowych
+        for (Icon icon : icons) {
+            if (icon.actionButton != null && controls.isButtonDown(icon.actionButton)) {
+                icon.onClick();
+                guiInteraction = true;
+            }
+        }
+
+        Point pos = controls.getPointerPosition();
+        Dimension size = WindowSize.getSize();
+
+        Icon newHoverIcon = null;
+
+        // Sprawdzenie wskazywanej ikony
+        for (Icon icon : icons) {
+            if (icon.checkHover(size, pos)) {
+                newHoverIcon = icon;
+                break;
+            }
+        }
+
+        if (hoveredIcon != null) {
+            // Opuszczono poprzenio wskazywaną ikonę
+            if (newHoverIcon == null) {
+                hoveredIcon.hoveredFlag = false;
+                hoveredIcon.onUnhover();
+                hoveredIcon = null;
+            }
+            // Wskazywana jest inna ikona
+            else if (newHoverIcon == hoveredIcon) {
+                hoveredIcon.hoveredFlag = false;
+                newHoverIcon.hoveredFlag = true;
+                hoveredIcon.onUnhover();
+                hoveredIcon = newHoverIcon;
+                hoveredIcon.onHover();
+            }
+            // Nadal wskazywana jest ta sama ikona
+        }
+        // Wskazano nową ikonę
+        else if (newHoverIcon != null) {
+            newHoverIcon.hoveredFlag = true;
+            hoveredIcon = newHoverIcon;
+            hoveredIcon.onHover();
+        }
+
+        guiInteraction = hoveredIcon != null;
+
+        if (hoveredIcon != null && controls.isButtonDown(ActionButton.CONFIRM)) {
+            hoveredIcon.onClick();
+        }
+
+        return guiInteraction;
+    }
 
     Point getAbsoluteMousePosition() {
         Point position = this.player.getControls().getPointerPosition();

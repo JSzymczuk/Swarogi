@@ -148,8 +148,9 @@ public class GameControls implements ControlsProvider, MouseListener, MouseMotio
     }
 
     public ActionButton getFirstSelectedOption() {
+        ActionButton[] values = ActionButton.values();
         for (int i = ActionButton.OPTION_0.getValue(); i <= ActionButton.OPTION_9.getValue(); ++i) {
-            ActionButton actionButton = ActionButton.values()[i];
+            ActionButton actionButton = values[i];
             if (isButtonDown(actionButton)) {
                 return actionButton;
             }

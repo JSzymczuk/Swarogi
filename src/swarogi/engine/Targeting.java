@@ -46,13 +46,9 @@ public final class Targeting {
             }
 
             // Sprawdź kryterium ruchu
-            if (targetTypes.contains(TargetType.Ground) && !targetUnit.hasCharacteristic(Characteristic.Ground)) {
-                return false;
-            }
-            if (targetTypes.contains(TargetType.Flying) && !targetUnit.hasCharacteristic(Characteristic.Flying)) {
-                return false;
-            }
-            if (targetTypes.contains(TargetType.Water) && !targetUnit.hasCharacteristic(Characteristic.Water)) {
+            if (!(targetTypes.contains(TargetType.Ground) && targetUnit.hasCharacteristic(Characteristic.Ground)
+                    || targetTypes.contains(TargetType.Flying) && targetUnit.hasCharacteristic(Characteristic.Flying)
+                    || targetTypes.contains(TargetType.Water) && targetUnit.hasCharacteristic(Characteristic.Water))) {
                 return false;
             }
 
