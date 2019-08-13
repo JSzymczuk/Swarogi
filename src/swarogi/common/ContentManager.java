@@ -1,5 +1,7 @@
 package swarogi.common;
 
+import swarogi.datamodels.Model;
+import swarogi.enums.ObjectState;
 import swarogi.enums.TerrainType;
 import swarogi.enums.TileSelectionTag;
 import swarogi.enums.TribePath;
@@ -25,7 +27,19 @@ public final class ContentManager {
         return terrainExtensions.getOrDefault(terrainType, null);
     }
 
-    public static BufferedImage getModel(String modelName) { return models.getOrDefault(modelName, null); }
+    public static BufferedImage getModel(String modelName, ObjectState state) {
+        if (models.containsKey(modelName)) {
+            return models.get(modelName).getTexture(state);
+        }
+        return null;
+    }
+
+    public static BufferedImage getModelTextureBase(String textureBaseName, ObjectState state) {
+        if (modelTextureBases.containsKey(textureBaseName)) {
+            return modelTextureBases.get(textureBaseName).getTexture(state);
+        }
+        return null;
+    }
 
     public static BufferedImage getIcon(String modelName) { return icons.getOrDefault(modelName, null); }
 
@@ -38,9 +52,9 @@ public final class ContentManager {
     private final static HashMap<TileSelectionTag, BufferedImage> tileSelections;
     private final static HashMap<TerrainType, BufferedImage> terrain;
     private final static HashMap<TerrainType, TerrainExtensionInfo> terrainExtensions;
-    private final static HashMap<String, BufferedImage> models;
-    private final static HashMap<String, BufferedImage> modelTextureBases;
     private final static HashMap<String, BufferedImage> icons;
+    private final static HashMap<String, Model> models;
+    private final static HashMap<String, Model> modelTextureBases;
 
     private final static HashMap<TribePath, BufferedImage> animalsDefault;
     private final static HashMap<TribePath, BufferedImage> animalsHover;
@@ -132,16 +146,16 @@ public final class ContentManager {
         loadAnimals();
         loadIcons();
 
-        models.put("LimeTree", loadImage("content/obstacles/lime-tree.png"));
-        models.put("OakTree", loadImage("content/obstacles/oak-tree.png"));
-        models.put("PineTree", loadImage("content/obstacles/pine-tree.png"));
-        models.put("WillowTree", loadImage("content/obstacles/willow-tree.png"));
-        models.put("Rock", loadImage("content/obstacles/rock.png"));
-        models.put("Bridge", loadImage("content/obstacles/bridge.png"));
-        models.put("Daisy", loadImage("content/decorations/daisy.png"));
-        models.put("Thickets", loadImage("content/decorations/thickets.png"));
-        models.put("Grain", loadImage("content/decorations/grain.png"));
-        models.put("Cabbage", loadImage("content/decorations/cabbage.png"));
+        models.put("LimeTree", new Model(loadImage("content/obstacles/lime-tree.png")));
+        models.put("OakTree", new Model(loadImage("content/obstacles/oak-tree.png")));
+        models.put("PineTree", new Model(loadImage("content/obstacles/pine-tree.png")));
+        models.put("WillowTree", new Model(loadImage("content/obstacles/willow-tree.png")));
+        models.put("Rock", new Model(loadImage("content/obstacles/rock.png")));
+        models.put("Bridge", new Model(loadImage("content/obstacles/bridge.png")));
+        models.put("Daisy", new Model(loadImage("content/decorations/daisy.png")));
+        models.put("Thickets", new Model(loadImage("content/decorations/thickets.png")));
+        models.put("Grain", new Model(loadImage("content/decorations/grain.png")));
+        models.put("Cabbage", new Model(loadImage("content/decorations/cabbage.png")));
     }
 
     private static void loadSelections() {
@@ -187,19 +201,19 @@ public final class ContentManager {
     }
 
     private static void loadUnits() {
-        models.put("Bowman", loadImage("content/units/models/bowman.png"));
-        models.put("Hero", loadImage("content/units/models/hero.png"));
-        models.put("Rider", loadImage("content/units/models/rider.png"));
-        models.put("Volkhv", loadImage("content/units/models/volkhv.png"));
-        models.put("Warrior", loadImage("content/units/models/warrior.png"));
-        models.put("Worker", loadImage("content/units/models/worker.png"));
+        models.put("Bowman", new Model(loadImage("content/units/bowman.png")));
+        models.put("Hero", new Model(loadImage("content/units/hero.png")));
+        models.put("Rider", new Model(loadImage("content/units/rider.png")));
+        models.put("Volkhv", new Model(loadImage("content/units/volkhv.png")));
+        models.put("Warrior", new Model(loadImage("content/units/warrior.png")));
+        models.put("Worker", new Model(loadImage("content/units/worker.png")));
 
-        modelTextureBases.put("Bowman", loadImage("content/units/bases/bowman.png"));
-        modelTextureBases.put("Hero", loadImage("content/units/bases/hero.png"));
-        modelTextureBases.put("Rider", loadImage("content/units/bases/rider.png"));
-        modelTextureBases.put("Volkhv", loadImage("content/units/bases/volkhv.png"));
-        modelTextureBases.put("Warrior", loadImage("content/units/bases/warrior.png"));
-        modelTextureBases.put("Worker", loadImage("content/units/bases/worker.png"));
+        modelTextureBases.put("Bowman", new Model(loadImage("content/units/bowman-base.png")));
+        modelTextureBases.put("Hero", new Model(loadImage("content/units/hero-base.png")));
+        modelTextureBases.put("Rider", new Model(loadImage("content/units/rider-base.png")));
+        modelTextureBases.put("Volkhv", new Model(loadImage("content/units/volkhv-base.png")));
+        modelTextureBases.put("Warrior", new Model(loadImage("content/units/warrior-base.png")));
+        modelTextureBases.put("Worker", new Model(loadImage("content/units/worker-base.png")));
 
         icons.put("Bowman", loadImage("content/icons/bowman.png"));
         icons.put("Hero", loadImage("content/icons/hero.png"));
@@ -210,17 +224,62 @@ public final class ContentManager {
     }
 
     private static void loadBuildings() {
-        models.put("Barracks", loadImage("content/buildings/models/barracks.png"));
-        models.put("Chram", loadImage("content/buildings/models/chram.png"));
-        models.put("Farm", loadImage("content/buildings/models/farm.png"));
-        models.put("Gord", loadImage("content/buildings/models/gord.png"));
-        models.put("Tower", loadImage("content/buildings/models/tower.png"));
 
-        modelTextureBases.put("Barracks", loadImage("content/buildings/bases/barracks.png"));
-        modelTextureBases.put("Chram", loadImage("content/buildings/bases/chram.png"));
-        modelTextureBases.put("Farm", loadImage("content/buildings/bases/farm.png"));
-        modelTextureBases.put("Gord", loadImage("content/buildings/bases/gord.png"));
-        modelTextureBases.put("Tower", loadImage("content/buildings/bases/tower.png"));
+        Model barracks = new Model();
+        barracks.addState(ObjectState.NORMAL, loadImage("content/buildings/barracks.png"));
+        barracks.addState(ObjectState.CONSTRUCTION_EARLY, loadImage("content/buildings/barracks-b0.png"));
+        barracks.addState(ObjectState.CONSTRUCTION_LATE, loadImage("content/buildings/barracks-b1.png"));
+
+        Model chram = new Model();
+        chram.addState(ObjectState.NORMAL, loadImage("content/buildings/chram.png"));
+        chram.addState(ObjectState.CONSTRUCTION_EARLY, loadImage("content/buildings/chram-b0.png"));
+        chram.addState(ObjectState.CONSTRUCTION_LATE, loadImage("content/buildings/chram-b1.png"));
+
+        Model farm = new Model();
+        farm.addState(ObjectState.NORMAL, loadImage("content/buildings/farm.png"));
+        farm.addState(ObjectState.CONSTRUCTION_EARLY, loadImage("content/buildings/farm-b0.png"));
+
+        Model gord = new Model();
+        gord.addState(ObjectState.NORMAL, loadImage("content/buildings/gord.png"));
+
+        Model tower = new Model();
+        tower.addState(ObjectState.NORMAL, loadImage("content/buildings/tower.png"));
+        tower.addState(ObjectState.CONSTRUCTION_EARLY, loadImage("content/buildings/tower-b0.png"));
+        tower.addState(ObjectState.CONSTRUCTION_LATE, loadImage("content/buildings/tower-b1.png"));
+
+        models.put("Barracks", barracks);
+        models.put("Chram", chram);
+        models.put("Farm", farm);
+        models.put("Gord", gord);
+        models.put("Tower", tower);
+
+        Model barracksBase = new Model();
+        barracksBase.addState(ObjectState.NORMAL, loadImage("content/buildings/barracks-base.png"));
+        barracksBase.addState(ObjectState.CONSTRUCTION_EARLY, loadImage("content/buildings/barracks-b0-base.png"));
+        barracksBase.addState(ObjectState.CONSTRUCTION_LATE, loadImage("content/buildings/barracks-b1-base.png"));
+
+        Model chramBase = new Model();
+        chramBase.addState(ObjectState.NORMAL, loadImage("content/buildings/chram-base.png"));
+        chramBase.addState(ObjectState.CONSTRUCTION_EARLY, loadImage("content/buildings/chram-b0-base.png"));
+        chramBase.addState(ObjectState.CONSTRUCTION_LATE, loadImage("content/buildings/chram-b1-base.png"));
+
+        Model farmBase = new Model();
+        farmBase.addState(ObjectState.NORMAL, loadImage("content/buildings/farm-base.png"));
+        farmBase.addState(ObjectState.CONSTRUCTION_EARLY, loadImage("content/buildings/farm-b0-base.png"));
+
+        Model gordBase = new Model();
+        gordBase.addState(ObjectState.NORMAL, loadImage("content/buildings/gord-base.png"));
+
+        Model towerBase = new Model();
+        towerBase.addState(ObjectState.NORMAL, loadImage("content/buildings/tower-base.png"));
+        towerBase.addState(ObjectState.CONSTRUCTION_EARLY, loadImage("content/buildings/tower-b0-base.png"));
+        towerBase.addState(ObjectState.CONSTRUCTION_LATE, loadImage("content/buildings/tower-b1-base.png"));
+
+        modelTextureBases.put("Barracks", barracksBase);
+        modelTextureBases.put("Chram", chramBase);
+        modelTextureBases.put("Farm", farmBase);
+        modelTextureBases.put("Gord", gordBase);
+        modelTextureBases.put("Tower", towerBase);
 
         icons.put("Barracks", loadImage("content/icons/barracks.png"));
         icons.put("Chram", loadImage("content/icons/chram.png"));
@@ -302,12 +361,5 @@ public final class ContentManager {
         g.drawImage(source, 0, 0, null);
         g.dispose();
         return b;
-    }
-
-    public static BufferedImage getModelTextureBase(String textureBaseName) {
-        if (modelTextureBases.containsKey(textureBaseName)) {
-            return modelTextureBases.get(textureBaseName);
-        }
-        return null;
     }
 }

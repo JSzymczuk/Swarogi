@@ -8,6 +8,7 @@ import swarogi.datamodels.SkillData;
 import swarogi.datamodels.UnitData;
 import swarogi.datamodels.UpgradeData;
 import swarogi.enums.ActionButton;
+import swarogi.enums.ObjectState;
 import swarogi.enums.TribePath;
 import swarogi.game.GameCamera;
 import swarogi.interfaces.ControlsProvider;
@@ -161,12 +162,12 @@ public class Player {
         }
     }
 
-    public BufferedImage getTextureBase(String textureBaseName) {
+    public BufferedImage getTextureBase(String textureBaseName, ObjectState state) {
         if (textureBases.containsKey(textureBaseName)) {
             return textureBases.get(textureBaseName);
         }
         else {
-            BufferedImage textureBase = ContentManager.getModelTextureBase(textureBaseName);
+            BufferedImage textureBase = ContentManager.getModelTextureBase(textureBaseName, state);
             if (textureBase != null) {
                 textureBase = ContentManager.createColoredBaseFromImage(textureBase,
                         color.getRed(), color.getGreen(), color.getBlue());

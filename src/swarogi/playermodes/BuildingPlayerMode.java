@@ -3,7 +3,6 @@ package swarogi.playermodes;
 import swarogi.actions.CreateBuildingAction;
 import swarogi.actions.MovementAction;
 import swarogi.common.Configuration;
-import swarogi.common.ContentManager;
 import swarogi.datamodels.BuildingData;
 import swarogi.engine.Movement;
 import swarogi.engine.Pathfinding;
@@ -23,7 +22,6 @@ import swarogi.interfaces.PlayerModeChangeListener;
 import swarogi.models.*;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -80,7 +78,7 @@ public class BuildingPlayerMode extends SelectionPlayerMode {
             icon.x = x + i * dx;
             icon.y = y;
             icon.actionButton = ActionButton.toOption(i);
-            icon.textureKey = building.getTextureName();
+            icon.textureKey = building.getModelName();
 
             if (building.getRequiredTribeLevel() > player.getTribeLevel()) {
                 icon.lockedFlag = true;

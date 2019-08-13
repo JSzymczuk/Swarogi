@@ -19,7 +19,7 @@ public final class Configuration {
 
     public static final int BASE_COMMAND_POINTS = 10;
     public static final int MAX_TRIBE_PATH_LEVEL = 5;
-    public static final int WOOD_PER_ADJACENT_TREE = 1;
+    public static final int WOOD_PER_ADJACENT_TREE = 5;
     public static final int MIN_ATTACK_DAMAGE = 1;
     public static final int BASE_REGENERATION = 6;
     public static final int INITIAL_TRIBE_LEVEL = 1;

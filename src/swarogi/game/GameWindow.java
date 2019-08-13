@@ -23,6 +23,5 @@ public class GameWindow extends JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         // this.setUndecorated(true); // Ukrywa pasek
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
     }
 }

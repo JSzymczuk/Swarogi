@@ -8,7 +8,6 @@ import swarogi.enums.*;
 import swarogi.interfaces.*;
 import swarogi.game.Tile;
 
-import javax.xml.crypto.Data;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
@@ -19,6 +18,8 @@ public class Unit implements Placeable, Destructible, PlayerUnit {
     private float health;
     private Player owner;
     private Tile tile;
+    private boolean wasAttacked;
+    private int remainingActionPoints;
 
     private Stack<Tile> path;
     private float customTranslationX;
@@ -35,6 +36,7 @@ public class Unit implements Placeable, Destructible, PlayerUnit {
         this.owner = owner;
         this.model = model;
         this.health = getMaxHealth();
+        this.remainingActionPoints = model.getMaxActions();
         this.facingDirection = UnitDirection.LEFT;
         this.effects = new HashMap<>();
         this.skillsCooldown = new HashMap<>();
@@ -56,6 +58,9 @@ public class Unit implements Placeable, Destructible, PlayerUnit {
 
     @Override
     public Tile getTile() { return tile; }
+
+    @Override
+    public ObjectState getObjectState() { return ObjectState.NORMAL; }
 
     @Override
     public Player getOwner() { return this.owner; }
@@ -237,8 +242,6 @@ public class Unit implements Placeable, Destructible, PlayerUnit {
         return model.hasCharacteristic(characteristic);
     }
 
-    private int remainingActionPoints;
-
     public boolean hasActionPoints(int points) { return remainingActionPoints >= points; }
     public void replenishActionPoints() {
         this.remainingActionPoints = model.getMaxActions();
@@ -301,8 +304,6 @@ public class Unit implements Placeable, Destructible, PlayerUnit {
     public boolean hasEffect(EffectData effectData) { return this.effects.containsKey(effectData); }
 
     public Set<EffectData> getEffects() { return this.effects.keySet(); }
-
-    private boolean wasAttacked;
 
     public void onAttacked() { this.wasAttacked = true; }
 

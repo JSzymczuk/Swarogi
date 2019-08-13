@@ -10,8 +10,9 @@ import java.util.List;
 
 public abstract class AbstractPlaceableData implements PlaceableData {
 
+    private int id;
     private String name;
-    private String textureName;
+    private String modelName;
     private int xTexturePosition;
     private int yTexturePosition;
     private float xScale;
@@ -28,12 +29,16 @@ public abstract class AbstractPlaceableData implements PlaceableData {
     }
 
     @Override
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    @Override
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
     @Override
-    public String getTextureName() { return textureName; }
-    public void setTextureName(String textureName) { this.textureName = textureName; }
+    public String getModelName() { return modelName; }
+    public void setModelName(String modelName) { this.modelName = modelName; }
 
     @Override
     public int getXTexturePosition() { return xTexturePosition; }

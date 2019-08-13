@@ -2,6 +2,7 @@ package swarogi.models;
 
 import swarogi.datamodels.DecorationData;
 import swarogi.enums.Characteristic;
+import swarogi.enums.ObjectState;
 import swarogi.game.Tile;
 import swarogi.interfaces.Placeable;
 import swarogi.interfaces.PlaceableData;
@@ -28,6 +29,9 @@ public class Decoration implements Placeable {
     public Tile getTile() {
         return tile;
     }
+
+    @Override
+    public ObjectState getObjectState() { return ObjectState.NORMAL; }
 
     @Override
     public void onPositionChanged(Tile tile) {

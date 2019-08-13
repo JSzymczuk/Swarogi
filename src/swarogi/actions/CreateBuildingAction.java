@@ -52,6 +52,7 @@ public class CreateBuildingAction implements Action {
             map.addDestructible(building);
             player.addBuilding(building);
             unit.useActionPoints(Configuration.BUILD_ACTION_POINTS_COST);
+            building.setRemainingConstructionTime(model.getConstructionTime());
             unit.setConstructedBuilding(building);
             for (Tile tile : building.getAllTiles()) {
                 for (Placeable decoration : tile.removeDecorations()) {

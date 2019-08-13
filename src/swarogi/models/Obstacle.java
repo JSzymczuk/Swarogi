@@ -2,6 +2,7 @@ package swarogi.models;
 
 import swarogi.datamodels.ObstacleData;
 import swarogi.enums.Characteristic;
+import swarogi.enums.ObjectState;
 import swarogi.interfaces.PlaceableData;
 import swarogi.game.Tile;
 import swarogi.interfaces.Placeable;
@@ -19,6 +20,9 @@ public class Obstacle implements Placeable {
     public PlaceableData getPlaceableData() {
         return model;
     }
+
+    @Override
+    public ObjectState getObjectState() { return ObjectState.NORMAL; }
 
     @Override
     public Tile getTile() {

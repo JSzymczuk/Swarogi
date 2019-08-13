@@ -7,9 +7,10 @@ import swarogi.enums.TerrainType;
 import java.util.List;
 
 public interface PlaceableData {
+    int getId();
     String getName();
 
-    String getTextureName();
+    String getModelName();
     int getXTexturePosition();
     int getYTexturePosition();
     float getXScale();

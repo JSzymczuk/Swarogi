@@ -6,6 +6,7 @@ import swarogi.common.TerrainExtensionInfo;
 import swarogi.common.WindowSize;
 import swarogi.engine.MapLoader;
 import swarogi.enums.Direction;
+import swarogi.enums.ObjectState;
 import swarogi.enums.TerrainType;
 import swarogi.gui.RenderingHelper;
 import swarogi.interfaces.WindowSizeProvider;
@@ -281,17 +282,17 @@ public class GamePanel extends JPanel implements PlayerModeChangeListener, Windo
 
         PlaceableData model = building.getPlaceableData();
         Point tileCenter = gordPosition.getCenter();
-        String textureName = model.getTextureName();
-        BufferedImage texture = ContentManager.getModel(textureName);
+        //String textureName = model.getModelName();
+        //BufferedImage texture = ContentManager.getModel(textureName, ObjectState.NORMAL);
 
-        if (texture != null) {
-            int textureWidth = (int) (texture.getWidth() * model.getXScale());
-            int textureHeight = (int) (texture.getHeight() * model.getYScale());
-            int x = tileCenter.x + model.getXTexturePosition();
-            int y = tileCenter.y + model.getYTexturePosition();
-            camera.x = x - Configuration.WINDOW_WIDTH / 2;
-            camera.y = y - Configuration.WINDOW_HEIGHT / 2;
-        }
+        //if (texture != null) {
+        //int textureWidth = (int) (texture.getWidth() * model.getXScale());
+        //int textureHeight = (int) (texture.getHeight() * model.getYScale());
+        int x = tileCenter.x + model.getXTexturePosition();
+        int y = tileCenter.y + model.getYTexturePosition();
+        camera.x = x - Configuration.WINDOW_WIDTH / 2;
+        camera.y = y - Configuration.WINDOW_HEIGHT / 2;
+        //}
 
         // TODO: Analogiczne umieszczenie jest w CreateBuildingAction. Wyciągnąć to gdzieś.
         if (map.tryPlace(building, gordPosition)) {

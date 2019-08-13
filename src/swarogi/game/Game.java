@@ -1,6 +1,7 @@
 package swarogi.game;
 
 import swarogi.common.ContentManager;
+import swarogi.data.Database;
 import swarogi.engine.MapLoader;
 
 public class Game {
@@ -11,6 +12,8 @@ public class Game {
     public boolean initialize() {
         ContentManager.loadContent();
         System.out.println("Zakończono ładowanie modeli.");
+        Database.initialize();
+        System.out.println("Zakończono inicjalizację bazy danych.");
 
         gameWindow = new GameWindow();
         gameControls = new GameControls();
@@ -21,6 +24,8 @@ public class Game {
         gameWindow.addKeyListener(gameControls);
 
         gameWindow.setPanel(gamePanel);
+        gameWindow.setVisible(true);
+
         running = true;
 
         return true;

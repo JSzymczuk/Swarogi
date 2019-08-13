@@ -38,12 +38,12 @@ public final class MapLoader {
                 }
                 else if (lineSplit[0].equals("Obstacle")) {
                     Tile tile = map.getTile(Integer.parseInt(lineSplit[2]), Integer.parseInt(lineSplit[3]));
-                    ObstacleData model = Database.Obstacles.get(lineSplit[1]);
+                    ObstacleData model = Database.Obstacles.get(Integer.parseInt(lineSplit[1]));
                     if (model == null) { System.err.println("Model " + lineSplit[1] + " was null.\n"); }
                     map.tryPlace(new Obstacle(model), tile);
                 }
                 else if (lineSplit[0].equals("Decoration")) {
-                    map.tryPlace(new Decoration(Database.Decorations.get(lineSplit[1]),
+                    map.tryPlace(new Decoration(Database.Decorations.get(Integer.parseInt(lineSplit[1])),
                             Integer.parseInt(lineSplit[4]), Integer.parseInt(lineSplit[5])),
                             map.getTile(Integer.parseInt(lineSplit[2]), Integer.parseInt(lineSplit[3])));
                 }
@@ -81,12 +81,12 @@ public final class MapLoader {
             for (Placeable placeable : map.getPlaceables()) {
                 if (placeable instanceof Obstacle) {
                     Tile tile = placeable.getTile();
-                    sb.append(String.format("Obstacle;%s;%d;%d\r\n", placeable.getPlaceableData().getName(), tile.getIdX(), tile.getIdY()));
+                    sb.append(String.format("Obstacle;%d;%d;%d\r\n", placeable.getPlaceableData().getId(), tile.getIdX(), tile.getIdY()));
                 }
                 else if (placeable instanceof Decoration) {
                     Decoration decoration = (Decoration)placeable;
                     Tile tile = decoration.getTile();
-                    sb.append(String.format("Decoration;%s;%d;%d;%d;%d\r\n", decoration.getPlaceableData().getName(), tile.getIdX(), tile.getIdY(),
+                    sb.append(String.format("Decoration;%d;%d;%d;%d;%d\r\n", decoration.getPlaceableData().getId(), tile.getIdX(), tile.getIdY(),
                             decoration.getCustomTranslationX(), decoration.getCustomTranslationY()));
                 }
             }

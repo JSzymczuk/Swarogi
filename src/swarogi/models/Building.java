@@ -6,6 +6,7 @@ import swarogi.datamodels.BuildingData;
 import swarogi.datamodels.EffectData;
 import swarogi.engine.Movement;
 import swarogi.enums.Characteristic;
+import swarogi.enums.ObjectState;
 import swarogi.enums.PlacingType;
 import swarogi.game.GameMap;
 import swarogi.game.Tile;
@@ -36,7 +37,6 @@ public class Building implements Placeable, Destructible, PlayerUnit {
         this.health = fullHp ? getMaxHealth() : (float)getMaxHealth() / (model.getConstructionTime() + 1);
         this.owner = owner;
         this.builders = new ArrayList<>();
-        this.constructionTime = model.getConstructionTime();
         this.unitsInside = new ArrayList<>();
     }
 
@@ -49,6 +49,13 @@ public class Building implements Placeable, Destructible, PlayerUnit {
 
     @Override
     public Tile getTile() { return tile; }
+
+    @Override
+    public ObjectState getObjectState() {
+        if (constructionTime == 0) { return ObjectState.NORMAL; }
+        if (constructionTime == model.getConstructionTime()) { return ObjectState.CONSTRUCTION_EARLY; }
+        return ObjectState.CONSTRUCTION_LATE;
+    }
 
     @Override
     public void onPositionChanged(Tile tile) {

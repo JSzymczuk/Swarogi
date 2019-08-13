@@ -4,10 +4,7 @@ import swarogi.common.Configuration;
 import swarogi.common.ContentManager;
 import swarogi.common.TerrainExtensionInfo;
 import swarogi.datamodels.UnitData;
-import swarogi.enums.Characteristic;
-import swarogi.enums.Direction;
-import swarogi.enums.TerrainType;
-import swarogi.enums.UnitDirection;
+import swarogi.enums.*;
 import swarogi.interfaces.Destructible;
 import swarogi.interfaces.DestructibleData;
 import swarogi.interfaces.PlaceableData;
@@ -46,7 +43,7 @@ public class Renderer {
         Point tileCenter = tile.getCenter();
         tileCenter.x -= camera.x;
         tileCenter.y -= camera.y;
-        BufferedImage texture = ContentManager.getModel(model.getTextureName());
+        BufferedImage texture = ContentManager.getModel(model.getModelName(), obstacle.getObjectState());
         if (texture != null) {
             int textureWidth = (int)(texture.getWidth() * model.getXScale());
             int textureHeight = (int)(texture.getHeight() * model.getYScale());
@@ -63,7 +60,7 @@ public class Renderer {
         Point tileCenter = tile.getCenter();
         tileCenter.x -= camera.x;
         tileCenter.y -= camera.y;
-        BufferedImage texture = ContentManager.getModel(model.getTextureName());
+        BufferedImage texture = ContentManager.getModel(model.getModelName(), decoration.getObjectState());
         if (texture != null) {
             int textureWidth = (int)(texture.getWidth() * model.getXScale());
             int textureHeight = (int)(texture.getHeight() * model.getYScale());
@@ -80,9 +77,10 @@ public class Renderer {
         Point tileCenter = tile.getCenter();
         tileCenter.x -= camera.x;
         tileCenter.y -= camera.y;
-        String textureName = model.getTextureName();
-        BufferedImage texture = ContentManager.getModel(textureName);
-        BufferedImage textureBase = unit.getOwner().getTextureBase(textureName);
+        String textureName = model.getModelName();
+        ObjectState state = unit.getObjectState();
+        BufferedImage texture = ContentManager.getModel(textureName, state);
+        BufferedImage textureBase = unit.getOwner().getTextureBase(textureName, state);
 
         if (texture != null && textureBase != null) {
             int textureWidth = (int)(texture.getWidth() * model.getXScale());
@@ -126,9 +124,10 @@ public class Renderer {
         Point tileCenter = tile.getCenter();
         tileCenter.x -= camera.x;
         tileCenter.y -= camera.y;
-        String textureName = model.getTextureName();
-        BufferedImage texture = ContentManager.getModel(textureName);
-        BufferedImage textureBase = building.getOwner().getTextureBase(textureName);
+        String textureName = model.getModelName();
+        ObjectState state = building.getObjectState();
+        BufferedImage texture = ContentManager.getModel(textureName, state);
+        BufferedImage textureBase = building.getOwner().getTextureBase(textureName, state);
 
         if (texture != null && textureBase != null) {
             int textureWidth = (int)(texture.getWidth() * model.getXScale());

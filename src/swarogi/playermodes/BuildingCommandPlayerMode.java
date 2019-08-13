@@ -2,10 +2,6 @@ package swarogi.playermodes;
 
 import swarogi.actions.CreateUnitAction;
 import swarogi.common.Configuration;
-import swarogi.common.ContentManager;
-import swarogi.data.Database;
-import swarogi.datamodels.BuildingData;
-import swarogi.datamodels.SkillData;
 import swarogi.datamodels.UnitData;
 import swarogi.enums.ActionButton;
 import swarogi.enums.HorizontalAlign;
@@ -20,13 +16,11 @@ import swarogi.gui.RenderingHelper;
 import swarogi.interfaces.ControlsProvider;
 import swarogi.interfaces.Placeable;
 import swarogi.interfaces.PlayerModeChangeListener;
-import swarogi.interfaces.PlayerUnit;
 import swarogi.models.Building;
 import swarogi.models.Player;
 import swarogi.models.Unit;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BuildingCommandPlayerMode extends SelectionPlayerMode {
@@ -146,7 +140,7 @@ public class BuildingCommandPlayerMode extends SelectionPlayerMode {
             icon.x = x + i * dx;
             icon.y = y;
             icon.actionButton = ActionButton.toOption(i);
-            icon.textureKey = unit.getTextureName();
+            icon.textureKey = unit.getModelName();
             icon.clickAction = () -> createUnit(unit);
             icon.hoverAction = () -> setText(icon.hoverText);
             icon.unhoverAction = () -> setText(null);

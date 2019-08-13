@@ -9,56 +9,57 @@ import java.util.Map;
 
 public final class Database {
 
-     public static final ObstacleData OakTree;
-     public static final ObstacleData WillowTree;
-     public static final ObstacleData PineTree;
-     public static final ObstacleData LimeTree;
-     public static final ObstacleData Rock;
-     public static final ObstacleData Bridge;
+    public static ObstacleData OakTree;
+    public static ObstacleData WillowTree;
+    public static ObstacleData PineTree;
+    public static ObstacleData LimeTree;
+    public static ObstacleData Rock;
+    public static ObstacleData Bridge;
 
-     public static final DecorationData Daisy;
-     public static final DecorationData Cabbage;
-     public static final DecorationData Thickets;
-     public static final DecorationData Grain;
+    public static DecorationData Daisy;
+    public static DecorationData Cabbage;
+    public static DecorationData Thickets;
+    public static DecorationData Grain;
 
-     public static final UnitData Worker;
-     public static final UnitData Warrior;
-     public static final UnitData Volkhv;
-     public static final UnitData Bowman;
-     public static final UnitData Rider;
-     public static final UnitData Hero;
+    public static UnitData Worker;
+    public static UnitData Warrior;
+    public static UnitData Volkhv;
+    public static UnitData Bowman;
+    public static UnitData Rider;
+    public static UnitData Hero;
 
-     public static final BuildingData Gord;
-     public static final BuildingData Tower;
-     public static final BuildingData Barracks;
-     public static final BuildingData Farm;
-     public static final BuildingData Chram;
+    public static BuildingData Gord;
+    public static BuildingData Tower;
+    public static BuildingData Barracks;
+    public static BuildingData Farm;
+    public static BuildingData Chram;
 
-    public static final UpgradeData IncreasedMeeleDamage;
-    public static final UpgradeData IncreasedUnitArmor;
-    public static final UpgradeData IncreasedMeleeBleeding;
-    public static final UpgradeData IncreasedBleedingDamage; // nie jest uwzględnione
-    public static final UpgradeData IncreasedMovement;
-    public static final UpgradeData IncreasedRangedDamage;
-    public static final UpgradeData IncreasedActionPoints;
-    public static final UpgradeData IncreasedResources;
-    public static final UpgradeData IncreasedUnitHealth;
-    public static final UpgradeData IncreasedRegeneration;
+    public static UpgradeData IncreasedMeeleDamage;
+    public static UpgradeData IncreasedUnitArmor;
+    public static UpgradeData IncreasedMeleeBleeding;
+    public static UpgradeData IncreasedBleedingDamage; // nie jest uwzględnione
+    public static UpgradeData IncreasedMovement;
+    public static UpgradeData IncreasedRangedDamage;
+    public static UpgradeData IncreasedActionPoints;
+    public static UpgradeData IncreasedResources;
+    public static UpgradeData IncreasedUnitHealth;
+    public static UpgradeData IncreasedRegeneration;
 
-    public static final Map<TribePath, ReseachData> TribePaths;
+    public static ValueEffectData Bleeding;
+    public static EffectData Stunned;
+    public static ValueEffectData Regeneration;
+    public static ValueEffectData HeroSkillDamageBonus;
+    public static ValueEffectData VolkhvSkillArmorBonus;
+    public static EffectData RestoreActionPoints;
+    public static EffectData EnterBuildingEffect;
 
-    public static final ValueEffectData Bleeding;
-    public static final EffectData Stunned;
-    public static final ValueEffectData Regeneration;
-    public static final ValueEffectData HeroSkillDamageBonus;
-    public static final ValueEffectData VolkhvSkillArmorBonus;
-    public static final EffectData RestoreActionPoints;
-    public static final EffectData EnterBuildingEffect;
+    public static Map<TribePath, ReseachData> TribePaths;
+    public static Map<Integer, ObstacleData> Obstacles;
+    public static Map<Integer, DecorationData> Decorations;
 
-    public static final Map<String, ObstacleData> Obstacles;
-    public static final Map<String, DecorationData> Decorations;
+    public static void initialize() {
 
-    static {
+        int id = 0;
 
         ValueEffectData bleeding = new ValueEffectData();
         bleeding.setName("Krwawienie");
@@ -84,7 +85,7 @@ public final class Database {
         ValueEffectData regeneration = new ValueEffectData();
         regeneration.setName("Regeneracja");
         regeneration.setDescription("TODO");
-        regeneration.setDuration(3);
+        regeneration.setDuration(4);
         regeneration.setBaseValue(5);
         Regeneration = regeneration;
 
@@ -112,9 +113,9 @@ public final class Database {
 
 
         SkillData enterBuilding = new SkillData();
-        enterBuilding.setName("Wejdź do budynku");
+        enterBuilding.setName("Pracuj");
         enterBuilding.setIconName("SkillEnterBuilding");
-        enterBuilding.setDescription("TODO");
+        enterBuilding.setDescription("Wyślij robotnika do Chaty, aby umożliwić mu zbieranie Żywności oraz Drewna z pobliskich pól.");
         enterBuilding.setCommandPoints(1);
         enterBuilding.setFoodCost(0);
         enterBuilding.setCooldown(0);
@@ -129,7 +130,7 @@ public final class Database {
         SkillData heroDamageBonus = new SkillData();
         heroDamageBonus.setName("Krzyk bojowy");
         heroDamageBonus.setIconName("SkillWarCry");
-        heroDamageBonus.setDescription("TODO");
+        heroDamageBonus.setDescription("Na 2 tury zwiększa o 2 obrażenia zadawane przez naziemne, sojusznicze jednostki w zasięgu 5 pól.");
         heroDamageBonus.setCommandPoints(1);
         heroDamageBonus.setFoodCost(100);
         heroDamageBonus.setCooldown(4);
@@ -146,7 +147,7 @@ public final class Database {
         SkillData heroReplenishActionPoints = new SkillData();
         heroReplenishActionPoints.setName("Rozkaz dowódcy");
         heroReplenishActionPoints.setIconName("SkillOrder");
-        heroReplenishActionPoints.setDescription("TODO");
+        heroReplenishActionPoints.setDescription("Pozwala pobliskiej, sojuszniczej jednostce kolejny raz wykonać akcję w tej turze.");
         heroReplenishActionPoints.setCommandPoints(1);
         heroReplenishActionPoints.setFoodCost(50);
         heroReplenishActionPoints.setCooldown(2);
@@ -158,12 +159,15 @@ public final class Database {
         heroReplenishActionPoints.addTarget(TargetType.PlayerUnit);
         heroReplenishActionPoints.addTarget(TargetType.Living);
         heroReplenishActionPoints.addTarget(TargetType.Machine);
+        heroReplenishActionPoints.addTarget(TargetType.Ground);
+        heroReplenishActionPoints.addTarget(TargetType.Flying);
+        heroReplenishActionPoints.addTarget(TargetType.Water);
         heroReplenishActionPoints.setRequirement(TribePath.Owl, 3);
 
         SkillData volkhvArmorBonus = new SkillData();
         volkhvArmorBonus.setName("Pancerz Swaroga");
         volkhvArmorBonus.setIconName("SkillArmorBonus");
-        volkhvArmorBonus.setDescription("TODO");
+        volkhvArmorBonus.setDescription("Zwiększa pancerz wybranej, pobliskiej, sojusznicej jednostki o 3 na 3 tury.");
         volkhvArmorBonus.setCommandPoints(1);
         volkhvArmorBonus.setFoodCost(40);
         volkhvArmorBonus.setEffectProbability(100);
@@ -174,12 +178,15 @@ public final class Database {
         volkhvArmorBonus.setPositiveFlag(true);
         volkhvArmorBonus.addTarget(TargetType.Ally);
         volkhvArmorBonus.addTarget(TargetType.Living);
+        volkhvArmorBonus.addTarget(TargetType.Ground);
+        volkhvArmorBonus.addTarget(TargetType.Flying);
+        volkhvArmorBonus.addTarget(TargetType.Water);
         volkhvArmorBonus.setRequirement(TribePath.Deer, 3);
 
         SkillData thunderStrike = new SkillData();
         thunderStrike.setName("Gniew Peruna");
         thunderStrike.setIconName("SkillThunderStrike");
-        thunderStrike.setDescription("TODO");
+        thunderStrike.setDescription("Zadaje 25-32 obrażeń wybranej, pobliskiej, wrogiej jednostce. Zapewnia 50% szansy, że cel zostanie ogłuszony.");
         thunderStrike.setCommandPoints(1);
         thunderStrike.setFoodCost(40);
         thunderStrike.setEffectProbability(50);
@@ -193,14 +200,17 @@ public final class Database {
         thunderStrike.addTarget(TargetType.Enemy);
         thunderStrike.addTarget(TargetType.Destructible);
         thunderStrike.addTarget(TargetType.Living);
+        thunderStrike.addTarget(TargetType.Ground);
+        thunderStrike.addTarget(TargetType.Flying);
+        thunderStrike.addTarget(TargetType.Water);
         thunderStrike.setRequirement(TribePath.Wolf, 3);
 
         SkillData volkhvRegeneration = new SkillData();
         volkhvRegeneration.setName("Łaska Mokoszy");
         volkhvRegeneration.setIconName("SkillHeal");
-        volkhvRegeneration.setDescription("TODO");
+        volkhvRegeneration.setDescription("Sprawia, że pobliska, wybrana, sojusznicza jednostka przez następne 3 tury będzie odzyskiwać 5 punktów zdrowia.");
         volkhvRegeneration.setCommandPoints(1);
-        volkhvRegeneration.setFoodCost(30);
+        volkhvRegeneration.setFoodCost(15);
         volkhvRegeneration.setEffectProbability(100);
         volkhvRegeneration.setTargetEffectInduced(Regeneration);
         volkhvRegeneration.setCooldown(1);
@@ -210,6 +220,7 @@ public final class Database {
         volkhvRegeneration.addTarget(TargetType.Ally);
         volkhvRegeneration.addTarget(TargetType.Destructible);
         volkhvRegeneration.addTarget(TargetType.Living);
+        volkhvRegeneration.addTarget(TargetType.Ground);
 
         //.setIconName("SkillExitBuilding");
         //.setIconName("SkillRepair");
@@ -403,8 +414,9 @@ public final class Database {
 
 
         ObstacleData oakTree = new ObstacleData();
+        oakTree.setId(++id);
         oakTree.setName("Dąb");
-        oakTree.setTextureName("OakTree");
+        oakTree.setModelName("OakTree");
         oakTree.setXTexturePosition(0);
         oakTree.setYTexturePosition(-70);
         oakTree.setXScale(0.5f);
@@ -416,8 +428,9 @@ public final class Database {
         OakTree = oakTree;
 
         ObstacleData willowTree = new ObstacleData();
+        willowTree.setId(++id);
         willowTree.setName("Wierzba");
-        willowTree.setTextureName("WillowTree");
+        willowTree.setModelName("WillowTree");
         willowTree.setXTexturePosition(-5);
         willowTree.setYTexturePosition(-65);
         willowTree.setXScale(0.5f);
@@ -429,8 +442,9 @@ public final class Database {
         WillowTree = willowTree;
 
         ObstacleData pineTree = new ObstacleData();
+        pineTree.setId(++id);
         pineTree.setName("Młoda sosna");
-        pineTree.setTextureName("PineTree");
+        pineTree.setModelName("PineTree");
         pineTree.setXTexturePosition(-2);
         pineTree.setYTexturePosition(-45);
         pineTree.setXScale(0.5f);
@@ -442,8 +456,9 @@ public final class Database {
         PineTree = pineTree;
 
         ObstacleData limeTree = new ObstacleData();
+        limeTree.setId(++id);
         limeTree.setName("Lipa");
-        limeTree.setTextureName("LimeTree");
+        limeTree.setModelName("LimeTree");
         limeTree.setXTexturePosition(-5);
         limeTree.setYTexturePosition(-75);
         limeTree.setXScale(0.5f);
@@ -455,8 +470,9 @@ public final class Database {
         LimeTree = limeTree;
 
         ObstacleData rock = new ObstacleData();
+        rock.setId(++id);
         rock.setName("Głaz");
-        rock.setTextureName("Rock");
+        rock.setModelName("Rock");
         rock.setXTexturePosition(0);
         rock.setYTexturePosition(-8);
         rock.setXScale(1.0f);
@@ -467,8 +483,9 @@ public final class Database {
         Rock = rock;
 
         ObstacleData bridge = new ObstacleData();
+        bridge.setId(++id);
         bridge.setName("Most");
-        bridge.setTextureName("Bridge");
+        bridge.setModelName("Bridge");
         bridge.setXTexturePosition(30);
         bridge.setYTexturePosition(0);
         bridge.setXScale(1.0f);
@@ -484,8 +501,9 @@ public final class Database {
 
 
         DecorationData daisy = new DecorationData();
+        daisy.setId(++id);
         daisy.setName("Stokrotka");
-        daisy.setTextureName("Daisy");
+        daisy.setModelName("Daisy");
         daisy.setXTexturePosition(0);
         daisy.setYTexturePosition(0);
         daisy.setXScale(1.0f);
@@ -493,8 +511,9 @@ public final class Database {
         Daisy = daisy;
 
         DecorationData cabbage = new DecorationData();
+        cabbage.setId(++id);
         cabbage.setName("Kapusta");
-        cabbage.setTextureName("Cabbage");
+        cabbage.setModelName("Cabbage");
         cabbage.setXTexturePosition(0);
         cabbage.setYTexturePosition(0);
         cabbage.setXScale(1.0f);
@@ -502,8 +521,9 @@ public final class Database {
         Cabbage = cabbage;
 
         DecorationData thickets = new DecorationData();
+        thickets.setId(++id);
         thickets.setName("Zarośla");
-        thickets.setTextureName("Thickets");
+        thickets.setModelName("Thickets");
         thickets.setXTexturePosition(0);
         thickets.setYTexturePosition(0);
         thickets.setXScale(1.0f);
@@ -511,8 +531,9 @@ public final class Database {
         Thickets = thickets;
 
         DecorationData grain = new DecorationData();
+        grain.setId(++id);
         grain.setName("Zboże");
-        grain.setTextureName("Grain");
+        grain.setModelName("Grain");
         grain.setXTexturePosition(0);
         grain.setYTexturePosition(0);
         grain.setXScale(1.0f);
@@ -546,8 +567,9 @@ public final class Database {
         Chram = chram;
 
         // Worker
+        worker.setId(++id);
         worker.setName("Robotnik");
-        worker.setDescription("TODO");
+        worker.setDescription("Lekka jednostka walcząca w zwarciu. Może wznosić budynki. Jeśli Robotnik zostanie umieszczony w Chacie, będzie pozyskiwać surowce.");
 
         worker.setFoodCost(20);
         worker.setWoodCost(0);
@@ -568,7 +590,7 @@ public final class Database {
         worker.setSteps(5);
         worker.setMovementSpeed(6.5f);
 
-        worker.setTextureName("Worker");
+        worker.setModelName("Worker");
         worker.setXTexturePosition(9);
         worker.setYTexturePosition(-30);
         //worker.setXTexturePosition(2);
@@ -594,8 +616,9 @@ public final class Database {
         // Koniec Worker
 
         // Warrior
+        warrior.setId(++id);
         warrior.setName("Wojownik");
-        warrior.setDescription("TODO");
+        warrior.setDescription("Ciężka jednostka walcząca w zwarciu.");
 
         warrior.setFoodCost(50);
         warrior.setWoodCost(0);
@@ -615,7 +638,7 @@ public final class Database {
         warrior.setSteps(5);
         warrior.setMovementSpeed(6.5f);
 
-        warrior.setTextureName("Warrior");
+        warrior.setModelName("Warrior");
         warrior.setXTexturePosition(0);
         warrior.setYTexturePosition(-30);
 //        warrior.setXTexturePosition(2);
@@ -637,8 +660,9 @@ public final class Database {
         // Koniec Warrior
 
         // Bowman
-        bowman.setName("Strzelec");
-        bowman.setDescription("TODO");
+        bowman.setId(++id);
+        bowman.setName("Łucznik");
+        bowman.setDescription("Lekka jednostka dystansowa. Może nauczyć się Płonących strzał i zadawać zwiększone obrażenia budynkom. Łucznik może zostać umieszczony w wieży.");
 
         bowman.setFoodCost(40);
         bowman.setWoodCost(10);
@@ -662,7 +686,7 @@ public final class Database {
         bowman.setSteps(5);
         bowman.setMovementSpeed(6.5f);
 
-        bowman.setTextureName("Bowman");
+        bowman.setModelName("Bowman");
         bowman.setXTexturePosition(0);
         bowman.setYTexturePosition(-30);
 //        bowman.setXTexturePosition(2);
@@ -682,8 +706,9 @@ public final class Database {
         // Koniec Bowman
 
         // Rider
+        rider.setId(++id);
         rider.setName("Konny");
-        rider.setDescription("TODO");
+        rider.setDescription("Szybka jednostka walcząca w zwarciu.");
 
         rider.setFoodCost(110);
         rider.setWoodCost(20);
@@ -703,7 +728,7 @@ public final class Database {
         rider.setSteps(6);
         rider.setMovementSpeed(6.5f);
 
-        rider.setTextureName("Rider");
+        rider.setModelName("Rider");
         rider.setXTexturePosition(-1);
         rider.setYTexturePosition(-39);
 //        rider.setXTexturePosition(-4);
@@ -725,8 +750,9 @@ public final class Database {
         // Koniec rider
 
         // Volkhv
+        volkhv.setId(++id);
         volkhv.setName("Guślarz");
-        volkhv.setDescription("TODO");
+        volkhv.setDescription("Lekka jednostka walcząca w zwarciu. Posiada zdolność Łaska Mokoszy, która umożliwia leczenie sojuszników. Może nauczyć się zdolności Pancerz Swaroga oraz Gniew Peruna.");
 
         volkhv.setFoodCost(50);
         volkhv.setWoodCost(10);
@@ -746,7 +772,7 @@ public final class Database {
         volkhv.setSteps(4);
         volkhv.setMovementSpeed(6.5f);
 
-        volkhv.setTextureName("Volkhv");
+        volkhv.setModelName("Volkhv");
         volkhv.setXTexturePosition(-1);
         volkhv.setYTexturePosition(-31);
 //        volkhv.setXTexturePosition(2);
@@ -773,6 +799,7 @@ public final class Database {
         // Koniec volkhv
 
         // Hero
+        leader.setId(++id);
         leader.setName("Dowódca");
         leader.setDescription("TODO");
 
@@ -794,7 +821,7 @@ public final class Database {
         leader.setSteps(6);
         leader.setMovementSpeed(6.5f);
 
-        leader.setTextureName("Hero");
+        leader.setModelName("Hero");
         leader.setXTexturePosition(-1);
         leader.setYTexturePosition(-39);
 //        leader.setXTexturePosition(-4);
@@ -818,6 +845,7 @@ public final class Database {
 
 
         // Gord
+        gord.setId(++id);
         gord.setName("Gród");
         gord.setDescription("TODO");
 
@@ -831,7 +859,7 @@ public final class Database {
         gord.setHpBarWidth(280);
         gord.setHpBarPositionY(-202);
 
-        gord.setTextureName("Gord");
+        gord.setModelName("Gord");
         gord.setXTexturePosition(50);
         gord.setYTexturePosition(-70);
         gord.setXScale(0.4f);
@@ -850,8 +878,9 @@ public final class Database {
         // Koniec Gord
 
         // Tower
+        tower.setId(++id);
         tower.setName("Wieża strażnicza");
-        tower.setDescription("TODO");
+        tower.setDescription("Struktura obronna.");
 
         tower.setFoodCost(60);
         tower.setWoodCost(50);
@@ -863,7 +892,7 @@ public final class Database {
         tower.setHpBarWidth(120);
         tower.setHpBarPositionY(-134);
 
-        tower.setTextureName("Tower");
+        tower.setModelName("Tower");
         tower.setXTexturePosition(38);
         tower.setYTexturePosition(-85);
         tower.setXScale(0.45f);
@@ -880,8 +909,9 @@ public final class Database {
         // Koniec Tower
 
          // Barracks
+        barracks.setId(++id);
         barracks.setName("Dom wojów");
-        barracks.setDescription("TODO");
+        barracks.setDescription("Dom wojów umożliwia szkolenie Wojowników, Łuczników oraz Jeźdźców.");
 
         barracks.setFoodCost(100);
         barracks.setWoodCost(80);
@@ -893,7 +923,7 @@ public final class Database {
         barracks.setHpBarWidth(160);
         barracks.setHpBarPositionY(-135);
 
-        barracks.setTextureName("Barracks");
+        barracks.setModelName("Barracks");
         barracks.setXTexturePosition(0);
         barracks.setYTexturePosition(-100);
         barracks.setXScale(0.5f);
@@ -914,8 +944,9 @@ public final class Database {
         // Koniec Barracks
 
         // Farm
+        farm.setId(++id);
         farm.setName("Chata");
-        farm.setDescription("TODO");
+        farm.setDescription("Umożliwia pozyskiwanie surowców przez Robotników.");
 
         farm.setFoodCost(20);
         farm.setWoodCost(30);
@@ -930,7 +961,7 @@ public final class Database {
         farm.setFoodProvidingFlag(true);
         farm.setWoodProvidingFlag(true);
 
-        farm.setTextureName("Farm");
+        farm.setModelName("Farm");
         farm.setXTexturePosition(45);
         farm.setYTexturePosition(-20);
         farm.setXScale(0.45f);
@@ -951,20 +982,21 @@ public final class Database {
         // Koniec Farm
 
         // Chram
+        chram.setId(++id);
         chram.setName("Chram");
-        chram.setDescription("TODO");
+        chram.setDescription("W Chramie szkoli się Guślarzy.");
 
         chram.setFoodCost(100);
         chram.setWoodCost(150);
         chram.setRequiredTribeLevel(8);
-        chram.setConstructionTime(3);
+        chram.setConstructionTime(2);
 
         chram.setMaxHealth(110);
         chram.setDefense(0);
         chram.setHpBarWidth(160);
         chram.setHpBarPositionY(-128);
 
-        chram.setTextureName("Chram");
+        chram.setModelName("Chram");
         chram.setXTexturePosition(0);
         chram.setYTexturePosition(-61);
         chram.setXScale(0.5f);
@@ -983,17 +1015,17 @@ public final class Database {
         // Koniec chram
 
         Obstacles = new HashMap<>();
-        Obstacles.put(OakTree.getName(), OakTree);
-        Obstacles.put(WillowTree.getName(), WillowTree);
-        Obstacles.put(PineTree.getName(), PineTree);
-        Obstacles.put(LimeTree.getName(), LimeTree);
-        Obstacles.put(Rock.getName(), Rock);
-        Obstacles.put(Bridge.getName(), Bridge);
+        Obstacles.put(OakTree.getId(), OakTree);
+        Obstacles.put(WillowTree.getId(), WillowTree);
+        Obstacles.put(PineTree.getId(), PineTree);
+        Obstacles.put(LimeTree.getId(), LimeTree);
+        Obstacles.put(Rock.getId(), Rock);
+        Obstacles.put(Bridge.getId(), Bridge);
 
         Decorations = new HashMap<>();
-        Decorations.put(Daisy.getName(), Daisy);
-        Decorations.put(Cabbage.getName(), Cabbage);
-        Decorations.put(Thickets.getName(), Thickets);
-        Decorations.put(Grain.getName(), Grain);
+        Decorations.put(Daisy.getId(), Daisy);
+        Decorations.put(Cabbage.getId(), Cabbage);
+        Decorations.put(Thickets.getId(), Thickets);
+        Decorations.put(Grain.getId(), Grain);
     }
 }

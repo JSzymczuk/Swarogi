@@ -4,6 +4,7 @@ import swarogi.common.Configuration;
 import swarogi.common.ContentManager;
 import swarogi.engine.Movement;
 import swarogi.enums.Direction;
+import swarogi.enums.ObjectState;
 import swarogi.enums.TerrainType;
 import swarogi.interfaces.Destructible;
 import swarogi.interfaces.Placeable;
@@ -273,7 +274,7 @@ public class GameMap {
 
         private int getValueFor(Placeable placeable) {
             PlaceableData placeableData = placeable.getPlaceableData();
-            BufferedImage texture = ContentManager.getModel(placeableData.getTextureName());
+            BufferedImage texture = ContentManager.getModel(placeableData.getModelName(), ObjectState.NORMAL);
             if (texture != null) {
                 return placeable.getTile().getTopLeft().y +
                         (int)(texture.getHeight() * placeableData.getYScale()) / 2
